@@ -20,13 +20,14 @@ module.exports = (sequelize) => {
     },
     weight:{
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull:false,
     },
     yearsLife:{
       type: DataTypes.STRING
     },
     image:{
-      type:DataTypes.TEXT
+      type:DataTypes.TEXT,
+      allowNull:false
     }
   },
   {timestamp:false}

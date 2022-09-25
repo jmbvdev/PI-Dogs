@@ -19,7 +19,7 @@ const getApiDogs = async () => {
             id:dog.id,
             name:dog.name,
             height:dog.height.metric,
-            weigth:dog.weight.metric,
+            weight:dog.weight.metric,
             yearsLife:dog.life_span,
             temperament:dog.temperament,
             image:dog.image.url
@@ -38,14 +38,14 @@ const getDogs=async()=>{
     let data=[...dtb,...api]
     return data
 }
-
+ // --------get("/dogs")------------------
 router.get('/', async (req,res)=>{
     const name = req.query.name 
     let dogs = await getDogs()
     if(name){ 
         let dogsPerName = await dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
         if (dogsPerName.length<1) {
-           return res.status(404).send("No se encontro perro con ese nombre");
+           return res.status(404).send(`Can't find dog with name: ${name}`);
         }     
         res.status(200).json(dogsPerName)
       
@@ -53,6 +53,7 @@ router.get('/', async (req,res)=>{
         res.status(200).json(dogs)
     }
    })
+   // --------get("/dogs/:id")------------------
    router.get('/:id', async (req,res)=>{
     const id=req.params.id
     let dogs=await getDogs()
@@ -60,7 +61,7 @@ router.get('/', async (req,res)=>{
      let dog= dogs.find(d=>d.id===+id)
   
     try {
-        if (!dog)return res.status(404).send(`No se encontro perro con id: ${id}`)
+        if (!dog)return res.status(404).send(`Can't find dog with id:${id}`)
         res.json(dog)
     
     } catch (error) {
@@ -68,5 +69,29 @@ router.get('/', async (req,res)=>{
     }
     
    })
+
+
+// --------post("/dogs")------------------
+router.post("/", async(req,res)=>{
+    const { name, height, weight, image, temperament } = req.body;
+    if (!name && !height && !weight && !image) {
+        res.status(404).send("Missing some required values")
+    }
+    try {
+        const dog=await Dog.create(req.body)
+        const dogTemperament= await Temperament.findAll({
+            where:{
+                name:temperament
+            }
+        })
+        await dog.addTemperament(dogTemperament)
+        res.status(201).send("the dog was successfully created")
+
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+
 
 module.exports = router;
