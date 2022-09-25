@@ -1,11 +1,5 @@
 const { Router } = require('express');
 const router = Router();
-require('dotenv').config();
-const path = require('path');
-const {
-  API_KEY
-} = process.env;
-const axios= require("axios");
 const {Dog,Temperament} = require('../db.js');
 const{getDogs}=require("../controllers/index")
 
