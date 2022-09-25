@@ -8,10 +8,10 @@ const{getApiDogs}=require("../controllers/index")
 router.get("/", async (req, res) => {
   try {
     let dogApi = await getApiDogs();
-    const tempsDB = await Temperament.findAll({ include: [Dog] });
+    const tempsDB = await Temperament.findAll({ include: {model:Dog} });
     if (tempsDB.length === 0) {
       const tempsDataBase = await dogApi
-        .map((dog) => dog.temperament)
+        .map((dog) => dog.temperaments)
         .join()
         .split(",");
       const temps = await tempsDataBase.map((temp) => temp.trim());

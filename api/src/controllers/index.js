@@ -19,7 +19,7 @@ const getApiDogs = async () => {
             height:dog.height.metric,
             weight:dog.weight.metric,
             yearsLife:dog.life_span,
-            temperament:dog.temperament,
+            temperaments:dog.temperament,
             image:dog.image.url
         }
     })

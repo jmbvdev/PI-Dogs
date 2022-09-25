@@ -15,7 +15,7 @@ router.get('/', async (req,res)=>{
         let dogsPerName = await dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
         if (dogsPerName.length<1) {
            return res.status(404).send(`Can't find dog with name: ${name}`);
-        }     
+        }    
         res.status(200).json(dogsPerName)
       
     }else{   
@@ -27,7 +27,7 @@ router.get('/', async (req,res)=>{
     const id=req.params.id
     let dogs=await getDogs()
 
-     let dog= dogs.find(d=>d.id===+id)
+     let dog= dogs.find(d=>d.id==id)
   
     try {
         if (!dog)return res.status(404).send(`Can't find dog with id:${id}`)
