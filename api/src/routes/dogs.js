@@ -3,7 +3,7 @@ const router = Router();
 require('dotenv').config();
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST,API_KEY
+  API_KEY
 } = process.env;
 const axios= require("axios");
 const {Dog,Temperament} = require('../db.js');
@@ -35,7 +35,7 @@ const getApiDogs = async () => {
 const getDogs=async()=>{
     const api=await getApiDogs()
     const dtb=await getDbDogs()
-    let data=[...api,...dtb]
+    let data=[...dtb,...api]
     return data
 }
 
@@ -53,6 +53,20 @@ router.get('/', async (req,res)=>{
         res.status(200).json(dogs)
     }
    })
-   
+   router.get('/:id', async (req,res)=>{
+    const id=req.params.id
+    let dogs=await getDogs()
+
+     let dog= dogs.find(d=>d.id===+id)
+  
+    try {
+        if (!dog)return res.status(404).send(`No se encontro perro con id: ${id}`)
+        res.json(dog)
+    
+    } catch (error) {
+        console.log(error)
+    }
+    
+   })
 
 module.exports = router;
