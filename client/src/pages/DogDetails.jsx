@@ -16,7 +16,7 @@ const DogDetails = () => {
             <h1>{dog.name}</h1>
             <img src={dog.image} alt="" />
             {/* <p>{dog.id.length>4?dog.temperaments.map(t=>t.name+ ", ")}</p> */}
-            <p><strong>Temperament: </strong>{id.length>3?dog.temperaments.map(t=>t.name+ ", "):dog.temperaments?.[0]}</p>
+            <p><strong>Temperament: </strong>{id.length>3?dog?.temperaments?.map(t=>t.name+ ", "):JSON.stringify(dog?.temperaments?.[0])}</p>
             <p><strong>Height: </strong>{dog.height}</p>
             <p><strong>Weight: </strong>{dog.weight}</p>
             <p><strong>Life Span: </strong>{dog.yearsLife}</p>
