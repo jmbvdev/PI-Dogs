@@ -50,10 +50,11 @@ function handleClickCreate() {
                         id={dog.id}
                         name={dog.name}
                         weight={dog.weight}
-                        // height={dog.height}
-                        // yearsLife={dog.yearsLife}
+                        height={dog.height}
+                        yearsLife={dog.yearsLife}
                         image={dog.image}
-                        temperaments={dog.id.length>4?dog.temperaments?.[0]?.name:dog.temperaments}
+                        temperaments={dog.temperaments}
+                        // temperaments={dog.id.length>4?dog?.temperaments?.[0]?.name:dog?.temperaments}
                         />
                     ))
                 } 

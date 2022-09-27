@@ -19,7 +19,7 @@ const getApiDogs = async () => {
             height:dog.height.metric,
             weight:dog.weight.metric,
             yearsLife:dog.life_span,
-            temperaments:dog.temperament?dog.temperament:dog.temperament="Happy, Wild",
+            temperaments: [dog.temperament].join().split(" ,").map((dog)=>dog.trim()),
             image:dog.image.url
         }
     })

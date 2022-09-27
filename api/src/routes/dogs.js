@@ -13,7 +13,6 @@ router.get('/', async (req,res)=>{
     let dogs = await getDogs() //todos los datos, api y db
     if(name){ 
         let dogsPerName = await dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
-   
         if (dogsPerName.length<1) {
            return res.status(404).send(`Can't find dog with name: ${name}`);
         }    
@@ -43,13 +42,14 @@ router.get('/', async (req,res)=>{
 
 // --------post("/dogs")------------------
 router.post("/", async(req,res)=>{
-    const { name, height, weight, image, temperament } = req.body;
+    const { name, height, weight, image,yearsLife, temperament } = req.body;
     if (!name && !height && !weight && !image) {
         res.status(404).send("Missing some required values")
     }
     try {
-        const dog=await Dog.create(req.body)
-        const dogTemperament= await Temperament.findAll({
+        const dog=await Dog.create({name, height, weight,yearsLife, image})
+        
+        let dogTemperament= await Temperament.findAll({
             where:{
                 name:temperament
             }
