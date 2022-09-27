@@ -27,7 +27,15 @@ const getApiDogs = async () => {
 };
 
   const getDbDogs=async()=>{
-    return await Dog.findAll({ include: [Temperament] });
+    return await Dog.findAll({
+      attributes: {
+        exclude: ['createdAt', 'updatedAt']
+    },
+       include:{
+        model:Temperament,
+        attributes:["id", "name"]
+       } 
+      });
   }
 
 const getDogs=async()=>{

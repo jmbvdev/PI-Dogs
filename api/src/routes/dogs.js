@@ -10,7 +10,7 @@ const{getDogs}=require("../controllers/index")
  // --------get("/dogs")------------------
 router.get('/', async (req,res)=>{
     const name = req.query.name 
-    let dogs = await getDogs()
+    let dogs = await getDogs() //todos los datos, api y db
     if(name){ 
         let dogsPerName = await dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
         if (dogsPerName.length<1) {

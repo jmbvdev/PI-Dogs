@@ -8,7 +8,15 @@ const{getApiDogs}=require("../controllers/index")
 router.get("/", async (req, res) => {
   try {
     let dogApi = await getApiDogs();
-    const tempsDB = await Temperament.findAll({ include: {model:Dog} });
+    const tempsDB = await Temperament.findAll({ 
+      attributes: {
+        exclude: ['createdAt', 'updatedAt'],
+    },
+      include: {
+        model:Dog,
+        attributes:["id", "name", "height", "weight", "yearsLife", "image"]
+      }
+     });
     if (tempsDB.length === 0) {
       const tempsDataBase = await dogApi
         .map((dog) => dog.temperaments)
