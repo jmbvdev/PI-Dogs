@@ -9,13 +9,15 @@ const Home = () => {
 const dispatch= useDispatch();
 let history = useHistory();
 const dogs= useSelector(state=>state.dogs)
-// const [dogs, setDogs]=useState("")
+
 useEffect(()=>{
 dispatch(getDogs())
 },[])
 function handleClickCreate() {
     history.push("/create");
   }
+
+
 
     return (
         <div>
@@ -41,8 +43,8 @@ function handleClickCreate() {
                 </div>
             </header>
             <main>
-                {
-                    dogs?.map(dog=>(
+                 {
+                   dogs&& dogs?.map(dog=>(
                         <DogCard
                         key={dog.id}
                         id={dog.id}
@@ -51,10 +53,10 @@ function handleClickCreate() {
                         // height={dog.height}
                         // yearsLife={dog.yearsLife}
                         image={dog.image}
-                        temperaments={dog.temperaments?dog.temperaments:"Happy"}
+                        temperaments={dog.id.length>4?dog.temperaments?.[0]?.name:dog.temperaments}
                         />
                     ))
-                }
+                } 
             </main>
             
         </div>

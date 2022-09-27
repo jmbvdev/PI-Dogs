@@ -13,6 +13,7 @@ router.get('/', async (req,res)=>{
     let dogs = await getDogs() //todos los datos, api y db
     if(name){ 
         let dogsPerName = await dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
+   
         if (dogsPerName.length<1) {
            return res.status(404).send(`Can't find dog with name: ${name}`);
         }    

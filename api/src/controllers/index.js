@@ -19,7 +19,7 @@ const getApiDogs = async () => {
             height:dog.height.metric,
             weight:dog.weight.metric,
             yearsLife:dog.life_span,
-            temperaments:dog.temperament,
+            temperaments:dog.temperament?dog.temperament:dog.temperament="Happy, Wild",
             image:dog.image.url
         }
     })
@@ -33,7 +33,7 @@ const getApiDogs = async () => {
     },
        include:{
         model:Temperament,
-        attributes:["id", "name"]
+        attributes:["name"]
        } 
       });
   }

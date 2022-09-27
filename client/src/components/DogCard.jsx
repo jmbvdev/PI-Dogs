@@ -15,7 +15,7 @@ function handleClickCard() {
                 <li className='dog-item'>
                    <h4>{name}</h4>
                    <img className={s.image} src={image} alt="" />
-                   <p><strong>Temperament: </strong>{typeof temperaments!=="string"?temperaments[0].name:temperaments}</p> 
+                   <p><strong>Temperament: </strong>{temperaments&&temperaments}</p> 
                    <p><strong>Weight: </strong>{weight}</p>
                 </li>
             </ul>

@@ -24,6 +24,7 @@ router.get("/", async (req, res) => {
         .split(",");
       const temps = await tempsDataBase.map((temp) => temp.trim());
       temps.forEach((t) => {
+        console.log(t)
         if (t !== "") {
           Temperament.findOrCreate({
             where: {
