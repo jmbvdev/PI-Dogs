@@ -1,4 +1,4 @@
-import { GET_DOGS,GET_DOG_DETAILS } from "../actions"
+import { GET_DOGS,GET_DOG_DETAILS,SEARCH_DOGS } from "../actions"
 const initialState={
 dogs:[],
 temperaments:[],
@@ -16,7 +16,12 @@ switch (action.type) {
         return{
             ...state,
             dogDetails:action.payload
-        }
+        };
+        case SEARCH_DOGS:
+            return{
+                ...state,
+                dogs:action.payload
+            }    
          
     default:
       return{

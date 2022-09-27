@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import { useHistory} from "react-router-dom";
 import DogCard from '../components/DogCard';
+import SearchDogs from '../components/searchDogs';
 import { getDogs } from '../redux/actions';
 
 
@@ -25,8 +26,8 @@ function handleClickCreate() {
                 <div>
                     <h1>Dogs</h1>
                     <div>
-                        <input type="text" />
-                        <button>Search</button>
+                        <SearchDogs/>
+                        
                      </div>
 
                     <button onClick={handleClickCreate}>Create dog</button>

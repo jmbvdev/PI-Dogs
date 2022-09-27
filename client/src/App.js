@@ -4,7 +4,13 @@ import './App.css';
 import LandingPage from './pages/LandingPage.jsx';
 import DogDetails from './pages/DogDetails.jsx';
 import CreateDog from './pages/CreateDog.jsx';
+import { useEffect } from 'react';
 function App() {
+  useEffect(() => {
+    window.process = {
+      ...window.process,
+    };
+  }, []);
   return (
     <div className="App">
       <Route exact path="/" component={LandingPage}/>
