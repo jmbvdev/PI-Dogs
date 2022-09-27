@@ -33,7 +33,8 @@ const getApiDogs = async () => {
     },
        include:{
         model:Temperament,
-        attributes:["name"]
+        attributes:["name"],
+        through: {attributes: []}
        } 
       });
   }
