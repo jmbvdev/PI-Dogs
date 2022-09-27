@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import { useHistory} from "react-router-dom";
 import DogCard from '../components/DogCard';
-import SearchDogs from '../components/searchDogs';
+import SearchDogs from '../components/SearchDogs.jsx';
 import { getDogs } from '../redux/actions';
 
 

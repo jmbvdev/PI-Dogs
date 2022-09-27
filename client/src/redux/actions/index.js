@@ -2,7 +2,9 @@ import axios from "axios"
 const url="http://localhost:3001"
 export const GET_DOGS = "GET_DOGS";
 export const GET_DOG_DETAILS = "GET_DOG_DETAILS";
-export const SEARCH_DOGS="SEARCH_DOGS"
+export const SEARCH_DOGS="SEARCH_DOGS";
+export const GET_TEMPERAMENTS="GET_TEMPERAMENTS"
+export const ADD_DOG="ADD_DOG"
 
 
 //Get all dogs------------
@@ -48,4 +50,27 @@ export function searchDogs(name){
         .catch(err=>console.log(err))
 
     }
+}
+
+export function getTemperaments(){
+    return async function(dispatch){
+        return axios.get(url+`/temperaments`)
+        .then(res=>{
+            dispatch({
+                type:GET_TEMPERAMENTS,
+                payload: res.data
+            })
+        })
+        .catch(err=>console.log(err))
+
+    }
+}
+
+
+export function addDog(payload) {
+    return async function(){
+        var resp = await axios.post("http://localhost:3001/dogs",payload)
+        return resp
+  }
+
 }

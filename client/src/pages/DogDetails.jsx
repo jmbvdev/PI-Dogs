@@ -9,7 +9,7 @@ const DogDetails = () => {
     const dog=useSelector(state=>state.dogDetails)
    useEffect(()=>{
     dispatch(getDogDetails(id))
-   },[id])
+   },[id, dispatch])
 
     return (
         <div>

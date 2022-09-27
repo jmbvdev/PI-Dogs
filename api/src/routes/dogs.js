@@ -42,7 +42,7 @@ router.get('/', async (req,res)=>{
 
 // --------post("/dogs")------------------
 router.post("/", async(req,res)=>{
-    const { name, height, weight, image,yearsLife, temperament } = req.body;
+    const { name, height, weight, image,yearsLife, temperaments } = req.body;
     if (!name && !height && !weight && !image) {
         res.status(404).send("Missing some required values")
     }
@@ -51,7 +51,7 @@ router.post("/", async(req,res)=>{
         
         let dogTemperament= await Temperament.findAll({
             where:{
-                name:temperament
+                name:temperaments
             }
         })
         await dog.addTemperament(dogTemperament)
