@@ -26,6 +26,7 @@ const getApiDogs = async () => {
     return data
 };
 
+
   const getDbDogs=async()=>{
     return await Dog.findAll({
       attributes: {

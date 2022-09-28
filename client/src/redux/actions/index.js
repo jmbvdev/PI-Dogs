@@ -5,7 +5,7 @@ export const GET_DOG_DETAILS = "GET_DOG_DETAILS";
 export const SEARCH_DOGS="SEARCH_DOGS";
 export const GET_TEMPERAMENTS="GET_TEMPERAMENTS"
 export const ADD_DOG="ADD_DOG"
-
+export const FILTER_BY_TEMPERAMENTS="FILTER_BY_TEMPERAMENTS"
 
 //Get all dogs------------
 export function getDogs(){
@@ -90,14 +90,14 @@ export function addDog({name,
 
 }
 
-// export const addDog=({
-//     name,
-//     minHeight,
-//     maxHeight,
-//     minWeight,
-//     maxWeight,
-//     minLife,
-//     maxLife,
-//     image,
-//     temperaments,
-// })=>
+
+
+// filters
+export function filterByTemperaments(payload){
+        
+    return  ({
+        type:FILTER_BY_TEMPERAMENTS,
+        payload,
+
+    })
+    }
