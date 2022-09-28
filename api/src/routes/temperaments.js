@@ -11,11 +11,7 @@ router.get("/", async (req, res) => {
     const tempsDB = await Temperament.findAll({ 
       attributes: {
         exclude: ['createdAt', 'updatedAt'],
-    },
-      include: {
-        model:Dog,
-        attributes:["id", "name", "height", "weight", "yearsLife", "image"]
-      }
+    }
      });
     if (tempsDB.length === 0) {
       const tempsDataBase = await dogApi
@@ -23,19 +19,19 @@ router.get("/", async (req, res) => {
         .join()
         .split(",");
       const temps = await tempsDataBase.map((temp) => temp.trim());
-      console.log(tempsDataBase)
-      temps.forEach((t) => {
-        if (t !== "") {
-          Temperament.findOrCreate({
-            where: {
-              name: t,
-            },
-          });
-        }
+      const filteredTemps=await temps.filter(t=>t.length>0)
+      console.log(filteredTemps)
+      filteredTemps.forEach((t) => {
+        Temperament.findOrCreate({
+          where: {
+            name: t,
+          },
+        });
       });
-      const dbTemp = await Temperament.findAll();
+       const dbTemp = await Temperament.findAll();
+       
       if (!dbTemp) return res.status(404).send("Temperaments not found");
-      res.json(dbTemp);
+       res.json(dbTemp);
     } else {
       res.json(tempsDB);
     }

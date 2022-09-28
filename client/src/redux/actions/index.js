@@ -67,10 +67,37 @@ export function getTemperaments(){
 }
 
 
-export function addDog(payload) {
+export function addDog({name,
+    minHeight,
+    maxHeight,
+    minWeight,
+    maxWeight,
+    minLife,
+    maxLife,
+    image,
+    temperaments}) {
     return async function(){
-        var resp = await axios.post("http://localhost:3001/dogs",payload)
+        var resp = await axios.post("http://localhost:3001/dogs",{
+            name,
+            height:`${minHeight} - ${maxHeight}`,
+            weight:`${minWeight} - ${maxWeight}`,
+            yearsLife:`${minLife} - ${maxLife} years`,
+            image,
+            temperaments
+        })
         return resp
   }
 
 }
+
+// export const addDog=({
+//     name,
+//     minHeight,
+//     maxHeight,
+//     minWeight,
+//     maxWeight,
+//     minLife,
+//     maxLife,
+//     image,
+//     temperaments,
+// })=>

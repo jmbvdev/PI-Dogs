@@ -4,12 +4,7 @@ import { addDog, getTemperaments } from '../redux/actions';
 
 const CreateDog = () => {
     const dispatch= useDispatch()
-    // "name": "Henridcito",
-	// "height": "64 - 69",
-	// "weight": "23 - 27",
-	// "yearsLife":"10 - 12 years",
-	// "image": "https://www.rd.com/wp-content/uploads/2019/01/shutterstock_673465372.jpg",
-	// "temperament":["Happy","Active"]
+ 
     useEffect(()=>{
      dispatch(getTemperaments())
 
@@ -17,35 +12,43 @@ const CreateDog = () => {
 
     const[dog, setDog]= useState({
         name:"",
-        height:"",
-        weight:"",
-        yearsLife:"",
+        minHeight:"",
+        maxHeight:"",
+        minWeight:"",
+        maxWeight:"",
+        minLife:"",
+        maxLife:"",
         image:"",
         temperaments:[]
     })
+    const [errors, setErrors]= useState({})
     const temperaments= useSelector((state)=>state.temperaments)
 
-    function handleInputChange(e){
-      
-        setDog({
-            ...dog,
-            [e.target.name]:e.target.value
-        })
-        
-    
-    }
-    function handleSelect(e){
-
-        if (dog.temperaments.includes(e.target.value)) {
-            alert("You already selected this temperament. Try again.");
-          } else if(dog.temperaments.length < 6){
-            setDog({
+    function handleInputChange(e) {
+      e.preventDefault();
+      setDog({
+        ...dog,
+        [e.target.name]: e.target.value,
+      });
+      setErrors(
+        validate({
           ...dog,
-          temperaments:[...dog.temperaments,e.target.value] 
-          })
-        }else{
-            alert("Can´t add more than 6")
-        }   
+          [e.target.name]: e.target.value,
+        })
+      );
+    }
+    function handleErrorSelect(e) {
+      if (dog.temperaments.includes(e.target.value)) {
+        errors.select = "Remember you can't add the same temperament!";
+      } else if (dog.temperaments.length < 6) {
+        setDog({
+          ...dog,
+          temperaments: [...dog.temperaments, e.target.value],
+        });
+      } else {
+        alert("You can't add more than six temperaments!");
+      }
+      return errors;
     }
 
     function deleteTemp(temp){
@@ -54,102 +57,236 @@ const CreateDog = () => {
             temperaments:dog.temperaments.filter((t)=>t !==temp)
         })
     }
-    function handleSubmit(e){
-        e.preventDefault();
-        dispatch(addDog(dog))
-        // alert("Perro exitosamente agregado")
-        setDog({
-            name:"",
-        height:"",
-        weight:"",
-        yearsLife:"",
-        image:"",
-        temperaments:[]
-
-        })
-        //navigate.push('/home')
-
+    function handleSubmit(e) {
+      e.preventDefault();
+      setErrors(dog);
+      dispatch(addDog(dog));
+      setDog({
+        name: "",
+        minHeight: "",
+        maxHeight: "",
+        minWeight: "",
+        maxWeight: "",
+        minLife: "",
+        maxLife: "",
+        image: "",
+        temperaments: [],
+      });
+      setErrors({});
     }
-    console.log(dog)
+   function validate(dog) {
+     let errors = {};
+     //name
+     if (!dog.name) {
+       errors.name = "Name is required";
+     } else if ((dog.name && dog.name.length < 4) || dog.name.length > 20) {
+       errors.name = "Name must be a minimun of 4 and max of 20";
+     } else if (!/^[A-Z]+$/i.test(dog.name)) {
+       errors.name = "Name is invalid";
+     }
+     //min Height
+     if (!dog.minHeight) {
+       errors.minHeight = "Min Height is required";
+     } else if (dog.minHeight >= dog.maxHeight) {
+       errors.minHeight =
+         "The minimum height cannot be greater or equal than the maximum height";
+     }
+     //max Height
+     if (!dog.maxHeight) {
+       errors.maxHeight = "Max Height is required";
+     } else if (dog.maxHeight <= dog.minHeight) {
+       errors.maxHeight =
+         "The maximum height cannot be less or equal than the minimum height";
+     }
+     //min Weight
+     if (!dog.minWeight) {
+       errors.minWeight = "Min Weight is required";
+     } else if (dog.minWeight >= dog.maxWeight) {
+       errors.minWeight =
+         "The minimum weight cannot be greater or equal than the maximum weight";
+     }
+     //max Weight
+     if (!dog.maxWeight) {
+       errors.maxWeight = "Max Weight is required";
+     } else if (dog.maxWeight <= dog.minWeight) {
+       errors.maxWeight =
+         "The maximum weight cannot be less or equal than the minimum weight";
+     }
+     //min Life
+     if (!dog.minLife) {
+       errors.minLife = "Min Life span is required";
+     } else if (dog.minLife >= dog.maxLife) {
+       errors.minLife =
+         "The minimum life span cannot be greater or equal than the maximum life span";
+     }
+     //max life span
+     if (!dog.maxLife) {
+       errors.maxLife = "Max Life span is required";
+     } else if (dog.maxLife <= dog.minLife) {
+       errors.maxLife =
+         "The maximum life span cannot be less or equal than the minimum life span";
+     }
+     //image
+     if (!dog.image) {
+       errors.image = "URL is required";
+     } else if (
+       !dog.image.match(/^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gim)
+     ) {
+       errors.image = "invalid url";
+     }
+     return errors;
+   }
+
+
     return (
       <div onSubmit={handleSubmit}>
         <h1>Create your own dog</h1>
         <form action="">
-            <div className='input-container'>
-                <label title="name">Name:</label>
-                <input
-                    key="name"
-                    type="text"
-                    name="name"
-                    placeholder="Dog name..."
-                    onChange={(e) => handleInputChange(e)}
-                    value={dog.name}
-                />
-            </div>
-            <div className='input-container'>
-                <label title="height">Height:</label>
-                <input
-                    key="height"
-                    type="text"
-                    name="height"
-                    placeholder="Height (min-max) ex: 10-20"
-                    onChange={(e) => handleInputChange(e)}
-                    value={dog.height}
-                />
-            </div>
-            <div className='input-container'>
-                <label title="height">Weight:</label>
-                <input
-                    key="weight"
-                    type="text"
-                    name="weight"
-                    placeholder="Weight (min-max) ex: 10-20"
-                    onChange={(e) => handleInputChange(e)}
-                    value={dog.weight}
-                />
-            </div>
-            <div className='input-container'>
-                <label title="yearsLife">Life Span:</label>
-                <input
-                    key="yearsLife"
-                    type="text"
-                    name="yearsLife"
-                    placeholder="Life Span (min-max) ex: 10-20"
-                    onChange={(e) => handleInputChange(e)}
-                    value={dog.yearsLife}
-                />
-            </div>
-            <div className='input-container'>
-                <label title="image">Image:</label>
-                <input
-                    key="image"
-                    type="text"
-                    name="image"
-                    placeholder="Type url image"
-                    onChange={(e) => handleInputChange(e)}
-                    value={dog.image}
-                />
-            </div>
-            <div>
+          <div className="input-container">
+            <label title="name">Name:</label>
+            <input
+              key="name"
+              type="text"
+              name="name"
+              placeholder="Dog name..."
+              onChange={(e) => handleInputChange(e)}
+              value={dog.name}
+            />
+            {errors.name && <p>{errors.name}</p>}
+          </div>
+          <div className="input-container">
+            <label title="minHeight">Min Height:</label>
+            <input
+              key="minHeight"
+              type="number"
+              name="minHeight"
+              placeholder="Minimum Height"
+              onChange={(e) => handleInputChange(e)}
+              value={dog.minHeight}
+              min="1"
+          
+
+            />
+            {errors.minHeight && <p>{errors.minHeight}</p>}
+          </div>
+          <div className="input-container">
+            <label title="maxHeight">Max Height:</label>
+            <input
+              key="maxHeight"
+              type="number"
+              name="maxHeight"
+              placeholder="Máximum Height"
+              onChange={(e) => handleInputChange(e)}
+              value={dog.maxHeight}
+              min="1"
+            />
+            {errors.maxHeight && <p>{errors.maxHeight}</p>}
+          </div>
+          <div className="input-container">
+            <label title="minWeight">Min Weight:</label>
+            <input
+              key="minWeight"
+              type="number"
+              name="minWeight"
+              placeholder="Minimum Weight"
+              onChange={(e) => handleInputChange(e)}
+              value={dog.minWeight}
+              min="1"
+            />
+            {errors.minWeight && <p>{errors.minWeight}</p>}
+          </div>
+          <div className="input-container">
+            <label title="maxWeight">Max Weight:</label>
+            <input
+              key="maxWeight"
+              type="number"
+              name="maxWeight"
+              placeholder="Máximum Height"
+              onChange={(e) => handleInputChange(e)}
+              value={dog.maxWeight}
+              min="1"
+            />
+            {errors.maxWeight && <p>{errors.maxWeight}</p>}
+          </div>
+          <div className="input-container">
+            <label title="minLife">Min life</label>
+            <input
+              key="minLife"
+              type="number"
+              name="minLife"
+              placeholder="Minimum Life Span"
+              onChange={(e) => handleInputChange(e)}
+              value={dog.minLife}
+              min="1"
+            />
+            {errors.minLife && <p>{errors.minLife}</p>}
+          </div>
+          <div className="input-container">
+            <label title="maxLife">Max life</label>
+            <input
+              key="maxLife"
+              type="number"
+              name="maxLife"
+              placeholder="Máximum Life Span"
+              onChange={(e) => handleInputChange(e)}
+              value={dog.maxLife}
+              min="1"
+            />
+            {errors.maxLife && <p>{errors.maxLife}</p>}
+          </div>
+          <div className="input-container">
+            <label title="image">Image:</label>
+            <input
+              key="image"
+              type="text"
+              name="image"
+              placeholder="URL image"
+              onChange={(e) => handleInputChange(e)}
+              value={dog.image}
+              min="1"
+            />
+            {errors.image && <p>{errors.image}</p>}
+          </div>
+          <div>
             <label>Temperaments:</label>
-                    <select multiple={true} key="temperaments" name="temperaments" onChange={(e) => handleSelect(e)} required value={dog.temperaments}>
-                        {
-                            
-                            temperaments?.map((t) => (
-                                <option value={t.name} key={t.id} >
-                                    {t.name}
-                                </option>
-                            ))
-                        }
-                    </select>
-                   
-            {dog.temperaments.map(t=>
-                <div key={t}>
-                    <p>{t}</p>
-                    <button type="button" onClick={()=> deleteTemp(t)}>x</button>
-                    </div>)}
-            </div>
-            <button type='submit' name='submit' onClick={(e)=>handleSubmit(e)}>submit</button>
+            <select
+              multiple={true}
+              key="temperaments"
+              name="temperaments"
+              onChange={(e) => handleErrorSelect(e)}
+              required
+              value={dog.temperaments}
+            >
+              {temperaments?.map((t) => (
+                <option value={t.name} key={t.id}>
+                  {t.name}
+                </option>
+              ))}
+            </select>
+
+            {dog.temperaments.map((t) => (
+              <div key={t}>
+                <p>{t}</p>
+                <button type="button" onClick={() => deleteTemp(t)}>
+                  x
+                </button>
+              </div>
+            ))}
+          </div>
+          {errors.select && <p>{errors.select}</p>}
+          {(
+            dog.name!=="" &&
+            dog.minHeight!==""&&
+            dog.maxHeight!=="" &&
+            dog.minWeight!=="" &&
+            dog.maxWeight!=="" &&
+            dog.maxLife!=="" &&
+            dog.minLife!=="" &&
+            dog.temperaments.length>0
+          ) ? <button type="submit" name="submit" onClick={(e) => handleSubmit(e)}>
+          submit
+        </button>:<p>You must enter data to submit</p>}
+          
         </form>
       </div>
     );
