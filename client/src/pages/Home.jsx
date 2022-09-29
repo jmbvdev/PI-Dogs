@@ -4,14 +4,16 @@ import { useHistory} from "react-router-dom";
 import DogCard from '../components/DogCard';
 import SearchDogs from '../components/SearchDogs.jsx';
 import { filterByOrigin, filterByRaces, filterByTemperaments, getDogs, getTemperaments, orderByAlphabet, orderByWeight } from '../redux/actions';
-
+import "../styles/home.css"
 const Home = () => {
   const dispatch = useDispatch();
   let history = useHistory();
   const dogs = useSelector((state) => state.dogs);
   const temperaments = useSelector((state) => state.temperaments);
-  const[alphabet, setalphabet]= useState(true)
-  const[weight, setWeight]= useState(true)
+  const [alphabet, setalphabet] = useState(true);
+  const [weight, setWeight] = useState(true);
+  const[page, setPage]=useState(1)
+  
 
   useEffect(() => {
     dispatch(getDogs());
@@ -23,35 +25,50 @@ const Home = () => {
 
   function filterTemperaments(e) {
     dispatch(filterByTemperaments(e.target.value));
+    setPage(1)
   }
   function filterRaces(e) {
     dispatch(filterByRaces(e.target.value));
+    setPage(1)
   }
   function filterOrigin(e) {
     dispatch(filterByOrigin(e.target.value));
+    setPage(1)
   }
   function orderAlphabetical() {
-    setalphabet(!alphabet)
+    setalphabet(!alphabet);
     dispatch(orderByAlphabet(alphabet));
+    setPage(1)
   }
   function orderWeight() {
-    setWeight(!weight)
+    setWeight(!weight);
     dispatch(orderByWeight(weight));
+    setPage(1)
   }
 
-  
-  const temperamentsUnic=[]
+  const temperamentsUnic = [];
   for (let i = 0; i < temperaments.length; i++) {
-   temperamentsUnic.push(temperaments[i].name)
-   
+    temperamentsUnic.push(temperaments[i].name);
   }
- const temperamentSelect=[...new Set(temperamentsUnic)]
+  const temperamentSelect = [...new Set(temperamentsUnic)];
 
-const dogsUnic=[]
-for (let i = 0; i < dogs.length; i++) {
- dogsUnic.push(dogs[i].name)
-}
-const raceSelect=[...new Set(dogsUnic)]
+  const dogsUnic = [];
+  for (let i = 0; i < dogs.length; i++) {
+    dogsUnic.push(dogs[i].name);
+  }
+  const raceSelect = [...new Set(dogsUnic)];
+
+  //Pagination
+  const dogsPerPage=8;
+  const lastIndex=page*dogsPerPage;
+  const firstIndex=lastIndex-dogsPerPage; 
+  const dogsPaginated=dogs.slice(firstIndex,lastIndex);
+  const totalPages=Math.ceil(dogs.length/dogsPerPage);
+  let pagesNumber=[]
+  for (let i = 0; i < totalPages; i++) {
+    pagesNumber.push(i)
+  }
+
 
   return (
     <div>
@@ -111,7 +128,7 @@ const raceSelect=[...new Set(dogsUnic)]
       </header>
       <main>
         {dogs &&
-          dogs?.map((dog) => (
+          dogsPaginated?.map((dog) => (
             <DogCard
               key={dog.id}
               id={dog.id}
@@ -121,10 +138,19 @@ const raceSelect=[...new Set(dogsUnic)]
               yearsLife={dog.yearsLife}
               image={dog.image}
               temperaments={dog.temperaments}
-              // temperaments={dog.id.length>4?dog?.temperaments?.[0]?.name:dog?.temperaments}
             />
           ))}
       </main>
+      {
+        page!==1&&<button onClick={()=>setPage(page-1)}>Previous</button>
+      }
+      {
+        pagesNumber.map(n=>n>0?<button onClick={()=>setPage(n)} key={n}>{n}</button>:null)
+      }
+      {
+        page!==totalPages&& <button onClick={()=>setPage(page+1)}>Next</button>
+      }
+  
     </div>
   );
 };
