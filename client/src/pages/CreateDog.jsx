@@ -78,56 +78,56 @@ const CreateDog = () => {
      let errors = {};
      //name
      if (!dog.name) {
-       errors.name = "Name is required";
+        errors.name = "Name is required";
      } else if ((dog.name && dog.name.length < 4) || dog.name.length > 20) {
-       errors.name = "Name must be a minimun of 4 and max of 20";
+        errors.name = "Name must be a minimun of 4 and max of 20";
      } else if (!/^[A-Z]+$/i.test(dog.name)) {
-       errors.name = "Name is invalid";
+        errors.name = "Name is invalid";
      }
      //min Height
-     if (!dog.minHeight) {
+    if (!dog.minHeight) {
        errors.minHeight = "Min Height is required";
-     } else if (dog.minHeight >= dog.maxHeight) {
+     }  if (+dog.minHeight >= +dog.maxHeight) {
        errors.minHeight =
          "The minimum height cannot be greater or equal than the maximum height";
      }
      //max Height
-     if (!dog.maxHeight) {
+      if (!dog.maxHeight) {
        errors.maxHeight = "Max Height is required";
-     } else if (dog.maxHeight <= dog.minHeight) {
+     }  if (+dog.maxHeight <= +dog.minHeight) {
        errors.maxHeight =
          "The maximum height cannot be less or equal than the minimum height";
      }
      //min Weight
-     if (!dog.minWeight) {
+     else if (!dog.minWeight) {
        errors.minWeight = "Min Weight is required";
-     } else if (dog.minWeight >= dog.maxWeight) {
+     } else if (+dog.minWeight >= +dog.maxWeight) {
        errors.minWeight =
          "The minimum weight cannot be greater or equal than the maximum weight";
      }
      //max Weight
-     if (!dog.maxWeight) {
+     else if (!dog.maxWeight) {
        errors.maxWeight = "Max Weight is required";
-     } else if (dog.maxWeight <= dog.minWeight) {
+     } else if (+dog.maxWeight <= +dog.minWeight) {
        errors.maxWeight =
          "The maximum weight cannot be less or equal than the minimum weight";
      }
      //min Life
-     if (!dog.minLife) {
+     else if (!dog.minLife) {
        errors.minLife = "Min Life span is required";
-     } else if (dog.minLife >= dog.maxLife) {
+     } else if (+dog.minLife >= +dog.maxLife) {
        errors.minLife =
          "The minimum life span cannot be greater or equal than the maximum life span";
      }
      //max life span
-     if (!dog.maxLife) {
+     else if (!dog.maxLife) {
        errors.maxLife = "Max Life span is required";
-     } else if (dog.maxLife <= dog.minLife) {
+     } else if (+dog.maxLife <= +dog.minLife) {
        errors.maxLife =
          "The maximum life span cannot be less or equal than the minimum life span";
      }
      //image
-     if (!dog.image) {
+     else if (!dog.image) {
        errors.image = "URL is required";
      } else if (
        !dog.image.match(/^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gim)
@@ -164,7 +164,6 @@ const CreateDog = () => {
               onChange={(e) => handleInputChange(e)}
               value={dog.minHeight}
               min="1"
-          
 
             />
             {errors.minHeight && <p>{errors.minHeight}</p>}
@@ -178,7 +177,7 @@ const CreateDog = () => {
               placeholder="Máximum Height"
               onChange={(e) => handleInputChange(e)}
               value={dog.maxHeight}
-              min="1"
+              min={dog.minHeight}
             />
             {errors.maxHeight && <p>{errors.maxHeight}</p>}
           </div>
@@ -204,7 +203,7 @@ const CreateDog = () => {
               placeholder="Máximum Height"
               onChange={(e) => handleInputChange(e)}
               value={dog.maxWeight}
-              min="1"
+              min={dog.minWeight}
             />
             {errors.maxWeight && <p>{errors.maxWeight}</p>}
           </div>
@@ -230,7 +229,7 @@ const CreateDog = () => {
               placeholder="Máximum Life Span"
               onChange={(e) => handleInputChange(e)}
               value={dog.maxLife}
-              min="1"
+              min={dog.minLife}
             />
             {errors.maxLife && <p>{errors.maxLife}</p>}
           </div>

@@ -8,62 +8,62 @@ export const ADD_DOG="ADD_DOG"
 export const FILTER_BY_TEMPERAMENTS="FILTER_BY_TEMPERAMENTS"
 
 //Get all dogs------------
-export function getDogs(){
-    return async function(dispatch){
-        return axios.get(url+"/dogs")
-        .then(res=>{
-            dispatch({
-                type:GET_DOGS,
-                payload: res.data
-            })
-        })
-        .catch(err=>console.log(err))
-
-    }
+export function getDogs() {
+  return async function (dispatch) {
+    return axios
+      .get(url + "/dogs")
+      .then((res) => {
+        dispatch({
+          type: GET_DOGS,
+          payload: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
 }
 
 //Get Dog By ID------------
 
-export function getDogDetails(id){
-    return async function(dispatch){
-        return axios.get(url+`/dogs/${id}`)
-        .then(res=>{
-            dispatch({
-                type:GET_DOG_DETAILS,
-                payload: res.data
-            })
-        })
-        .catch(err=>console.log(err))
-
-    }
+export function getDogDetails(id) {
+  return async function (dispatch) {
+    return axios
+      .get(url + `/dogs/${id}`)
+      .then((res) => {
+        dispatch({
+          type: GET_DOG_DETAILS,
+          payload: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
 }
 
-export function searchDogs(name){
-    return async function(dispatch){
-        return axios.get(url+`/dogs?name=${name}`)
-        .then(res=>{
-            dispatch({
-                type:SEARCH_DOGS,
-                payload: res.data
-            })
-        })
-        .catch(err=>console.log(err))
-
-    }
+export function searchDogs(name) {
+  return async function (dispatch) {
+    return axios
+      .get(url + `/dogs?name=${name}`)
+      .then((res) => {
+        dispatch({
+          type: SEARCH_DOGS,
+          payload: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
 }
 
-export function getTemperaments(){
-    return async function(dispatch){
-        return axios.get(url+`/temperaments`)
-        .then(res=>{
-            dispatch({
-                type:GET_TEMPERAMENTS,
-                payload: res.data
-            })
-        })
-        .catch(err=>console.log(err))
-
-    }
+export function getTemperaments() {
+  return async function (dispatch) {
+    return axios
+      .get(url + `/temperaments`)
+      .then((res) => {
+        dispatch({
+          type: GET_TEMPERAMENTS,
+          payload: res.data,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
 }
 
 
