@@ -23,6 +23,7 @@ const getApiDogs = async () => {
             image:dog.image.url
         }
     })
+
     return data
 };
 
