@@ -3,13 +3,15 @@ import {useDispatch, useSelector} from "react-redux"
 import { useHistory} from "react-router-dom";
 import DogCard from '../components/DogCard';
 import SearchDogs from '../components/SearchDogs.jsx';
-import { filterByOrigin, filterByRaces, filterByTemperaments, getDogs, getTemperaments } from '../redux/actions';
+import { filterByOrigin, filterByRaces, filterByTemperaments, getDogs, getTemperaments, orderByAlphabet, orderByWeight } from '../redux/actions';
 
 const Home = () => {
   const dispatch = useDispatch();
   let history = useHistory();
   const dogs = useSelector((state) => state.dogs);
   const temperaments = useSelector((state) => state.temperaments);
+  const[alphabet, setalphabet]= useState(true)
+  const[weight, setWeight]= useState(true)
 
   useEffect(() => {
     dispatch(getDogs());
@@ -27,6 +29,14 @@ const Home = () => {
   }
   function filterOrigin(e) {
     dispatch(filterByOrigin(e.target.value));
+  }
+  function orderAlphabetical() {
+    setalphabet(!alphabet)
+    dispatch(orderByAlphabet(alphabet));
+  }
+  function orderWeight() {
+    setWeight(!weight)
+    dispatch(orderByWeight(weight));
   }
 
   
@@ -95,8 +105,8 @@ const raceSelect=[...new Set(dogsUnic)]
               
             </select>
           </div>
-          <button>A-Z</button>
-          <button>Weight</button>
+          <button onClick={orderAlphabetical}>{alphabet? "A-Z": "Z-A"}</button>
+          <button onClick={orderWeight}>Weight</button>
         </div>
       </header>
       <main>

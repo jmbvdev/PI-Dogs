@@ -8,6 +8,8 @@ export const ADD_DOG="ADD_DOG"
 export const FILTER_BY_TEMPERAMENTS="FILTER_BY_TEMPERAMENTS"
 export const FILTER_BY_RACES="FILTER_BY_RACES"
 export const FILTER_BY_ORIGIN="FILTER_BY_ORIGIN"
+export const ORDER_BY_ALPHABET="ORDER_BY_ALPHABET"
+export const ORDER_BY_WEIGHT="ORDER_BY_WEIGHT"
 
 //Get all dogs------------
 export function getDogs() {
@@ -120,3 +122,21 @@ export function filterByTemperaments(payload){
     
         })
         }
+        
+
+        export function orderByAlphabet(payload){
+        
+          return  ({
+              type:ORDER_BY_ALPHABET,
+              payload,
+      
+          })
+          }
+          export function orderByWeight(payload){
+        
+            return  ({
+                type:ORDER_BY_WEIGHT,
+                payload,
+        
+            })
+            }
