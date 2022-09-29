@@ -3,8 +3,7 @@ import {useDispatch, useSelector} from "react-redux"
 import { useHistory} from "react-router-dom";
 import DogCard from '../components/DogCard';
 import SearchDogs from '../components/SearchDogs.jsx';
-import { filterByTemperaments, getDogs, getTemperaments } from '../redux/actions';
-
+import { filterByOrigin, filterByRaces, filterByTemperaments, getDogs, getTemperaments } from '../redux/actions';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -23,6 +22,26 @@ const Home = () => {
   function filterTemperaments(e) {
     dispatch(filterByTemperaments(e.target.value));
   }
+  function filterRaces(e) {
+    dispatch(filterByRaces(e.target.value));
+  }
+  function filterOrigin(e) {
+    dispatch(filterByOrigin(e.target.value));
+  }
+
+  
+  const temperamentsUnic=[]
+  for (let i = 0; i < temperaments.length; i++) {
+   temperamentsUnic.push(temperaments[i].name)
+   
+  }
+ const temperamentSelect=[...new Set(temperamentsUnic)]
+
+const dogsUnic=[]
+for (let i = 0; i < dogs.length; i++) {
+ dogsUnic.push(dogs[i].name)
+}
+const raceSelect=[...new Set(dogsUnic)]
 
   return (
     <div>
@@ -43,16 +62,39 @@ const Home = () => {
               onChange={(e) => filterTemperaments(e)}
             >
               <option value="all">All Temperaments</option>
-              {temperaments?.map((t) => (
-                <option key={t.id} value={t.name}>
-                  {t.name}
+              {temperamentSelect?.map((t) => (
+                <option key={t} value={t}>
+                  {t}
                 </option>
               ))}
             </select>
           </div>
-          <select>
-            <option value="bulldog">Race</option>
-          </select>
+          <div className="filter-container">
+            <select
+              name="filterByRace"
+              defaultValue={"default"}
+              onChange={(e) => filterRaces(e)}
+            >
+              <option value="all">All races</option>
+              {raceSelect?.map((r) => (
+                <option key={r} value={r}>
+                  {r}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="filter-container">
+            <select
+              name="filterByOrigin"
+              defaultValue={"default"}
+              onChange={(e) => filterOrigin(e)}
+            >
+              <option value="all">Api and DB</option>
+              <option value="api">Only Api</option>
+              <option value="db">Only DB</option>
+              
+            </select>
+          </div>
           <button>A-Z</button>
           <button>Weight</button>
         </div>

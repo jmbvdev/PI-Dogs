@@ -1,4 +1,4 @@
-import { GET_DOGS,GET_DOG_DETAILS,SEARCH_DOGS,GET_TEMPERAMENTS,ADD_DOG, FILTER_BY_TEMPERAMENTS } from "../actions"
+import { GET_DOGS,GET_DOG_DETAILS,SEARCH_DOGS,GET_TEMPERAMENTS,ADD_DOG, FILTER_BY_TEMPERAMENTS, FILTER_BY_RACES, FILTER_BY_ORIGIN } from "../actions"
 const initialState={
 dogs:[],
 allDogs:[],
@@ -47,6 +47,28 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         dogs: temperament,
+      };
+      case FILTER_BY_RACES:
+      const filterRace= state.allDogs;
+      const races =
+        action.payload === "all"
+          ? filterRace
+          : filterRace.filter((e) => e.name===action.payload)
+      return {
+        ...state,
+        dogs:races
+      };
+      case FILTER_BY_ORIGIN:
+      const filterOrigin= state.allDogs;
+      const origins =
+        action.payload === "all"
+          ? filterOrigin
+          : filterOrigin.filter((e) => 
+          action.payload==="db"?e.id.length>3:typeof e.id=="number"
+          )
+      return {
+        ...state,
+        dogs:origins
       };
 
     default:

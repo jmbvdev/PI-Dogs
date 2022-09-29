@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDog, getDogDetails, getTemperaments } from '../redux/actions';
+import { addDog, getTemperaments } from '../redux/actions';
 const{validate}=require("../utils/validator")
 
 
