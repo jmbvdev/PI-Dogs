@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import {useDispatch} from "react-redux"
 import{searchDogs}from "../redux/actions/index"
+import s from "../styles/search.module.css"
 
 const SearchDogs = () => {
      const dispatch= useDispatch()

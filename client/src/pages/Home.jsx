@@ -4,7 +4,7 @@ import { useHistory} from "react-router-dom";
 import DogCard from '../components/DogCard';
 import SearchDogs from '../components/SearchDogs.jsx';
 import { filterByOrigin, filterByRaces, filterByTemperaments, getDogs, getTemperaments, orderByAlphabet, orderByWeight } from '../redux/actions';
-import "../styles/home.css"
+import s from "../styles/home.module.css"
 const Home = () => {
   const dispatch = useDispatch();
   let history = useHistory();
