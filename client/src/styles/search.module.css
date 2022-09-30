@@ -1,0 +1,35 @@
+.search{
+    display: flex;
+    flex-direction: column;
+
+    
+}
+.search input{
+    background-color: transparent;
+    border: 1px white solid;
+    border-radius: 8px;
+    position: relative;
+    bottom: 15px;
+    padding: auto;
+    color: #fff;
+    padding-left: 2rem;
+    
+    
+}
+.search p{
+    color: #fff;
+    display: block;
+    font-family: "Poppins",serif;
+    position: relative;
+    top: 10px;
+    
+}
+.search i{
+    color: #fff;
+   position:relative;
+   left: 3%;
+   top: 2px;
+   font-size: 15px;
+  
+
+}

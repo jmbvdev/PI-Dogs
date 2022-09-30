@@ -75,24 +75,23 @@ const Home = () => {
     <div className={s.container}>
       <header className={s.header}>
         <div className={s.header_search}>
-          <div className={s.logo}>
-          <img src={icon} alt="dog-icon" />
-          <h2>PuppypediA</h2>
-          </div>
+          <img className={s.logo} src={icon} alt="dog-icon" />
           <div className={s.search}>
+          <h1>PuppypediA</h1>
             <SearchDogs />
           </div>
+          <button className={s.create} onClick={handleClickCreate}>  <i className="fa-solid fa-plus"></i>Add dog</button>
 
-          <button onClick={handleClickCreate}>Create dog</button>
         </div>
         <div className={s.filters}>
-          <div className="filter-container">
+          <div className={s.select}>
             <select
               name="filterBytemperament"
               defaultValue={"default"}
               onChange={(e) => filterTemperaments(e)}
             >
-              <option value="all">All Temperaments</option>
+              
+              <option value="all">Temperaments</option>
               {temperamentSelect?.map((t) => (
                 <option key={t} value={t}>
                   {t}
@@ -100,13 +99,13 @@ const Home = () => {
               ))}
             </select>
           </div>
-          <div className="filter-container">
+          <div className={s.select}>
             <select
               name="filterByRace"
               defaultValue={"default"}
               onChange={(e) => filterRaces(e)}
             >
-              <option value="all">All races</option>
+              <option value="all">Breeds</option>
               {raceSelect?.map((r) => (
                 <option key={r} value={r}>
                   {r}
@@ -114,31 +113,31 @@ const Home = () => {
               ))}
             </select>
           </div>
-          <div className="filter-container">
+          <div className={s.select}>
             <select
               name="filterByOrigin"
               defaultValue={"default"}
               onChange={(e) => filterOrigin(e)}
             >
-              <option value="all">Api and DB</option>
+              <option value="all">Origin</option>
               <option value="api">Only Api</option>
               <option value="db">Only DB</option>
               
             </select>
           </div>
-          <button onClick={orderAlphabetical}>{alphabet? "A-Z": "Z-A"}</button>
-          <button onClick={orderWeight}>Weight</button>
+          <button className={s.alpha} onClick={orderAlphabetical}>{alphabet? <i className="fa-solid fa-arrow-up-a-z"></i>: <i className="fa-solid fa-arrow-down-z-a"></i>}</button>
+          <button className={s.alpha} onClick={orderWeight}><i className="fa-solid fa-weight-hanging"></i></button>
         </div>
       </header>
       <div className={s.pages}>
       {
-        page!==1&&<button onClick={()=>setPage(page-1)}>Previous</button>
+        page!==1&&<button className={s.page_number} onClick={()=>setPage(page-1)}><i className="fa-solid fa-circle-left"></i></button>
       }
       {
-        pagesNumber.map(n=>n>0?<button onClick={()=>setPage(n)} key={n}>{n}</button>:null)
+        pagesNumber.map(n=>n>0?<button className={s.page_number} onClick={()=>setPage(n)} key={n}>{n}</button>:null)
       }
       {
-        page!==totalPages&& <button onClick={()=>setPage(page+1)}>Next</button>
+        page!==totalPages&& <button className={s.page_number} onClick={()=>setPage(page+1)}><i className="fa-solid fa-circle-right"></i></button>
       }
 
       </div>
@@ -158,7 +157,11 @@ const Home = () => {
             />
           ))}
       </main>
-     
+      <div  className={s.bone}>
+        <span>#{page}</span>
+
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Bone_noun_71979_cc.svg/1280px-Bone_noun_71979_cc.svg.png" alt="bone" />
+      </div>
   
     </div>
   );

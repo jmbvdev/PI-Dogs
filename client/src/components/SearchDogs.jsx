@@ -16,11 +16,16 @@ const SearchDogs = () => {
     
 
     return (
-        <div>
-            <input type="text" placeholder='search by race'
-            onChange={handleChange}
-            />
+        <div className={s.search}>
+            <p>Search by breed</p>
+            <i className="fa-solid fa-paw"></i>
+                <input type="text" 
+                onChange={(e)=>handleChange(e)}
+                />
+          
            
+
+          
         </div>
     );
 };
