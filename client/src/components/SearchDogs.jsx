@@ -12,6 +12,7 @@ const SearchDogs = () => {
         e.preventDefault()
         setSearch(e.target.value)
         dispatch(searchDogs(search))
+       
     }
     
 

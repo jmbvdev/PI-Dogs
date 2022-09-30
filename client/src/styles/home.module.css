@@ -134,7 +134,7 @@ cursor: pointer;
     font-size: 18px;
     font-weight: 400;
     padding: 4px 8px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Outfit', sans-serif;
 }
 .page_number:hover{
    background-color: #8ebff6;
@@ -156,11 +156,40 @@ cursor: pointer;
 
 }
 .bone span{
-    font-family:"Plus Jakarta Sans" ,sans-serif;
+    font-family:"Outfit" ,sans-serif;
     font-size: 1.5rem;
     position: relative;
     color: #fff;
-    left: 110px;
+    left: 115px;
     bottom: 54px;
    
 }
+@media only screen and (max-width: 800px) {
+    .logo{
+        display: none;
+    }
+    .search h1{
+        display: none;
+    }
+  .header_search{
+    flex-direction: column;
+  }
+  .create{
+    margin: 1rem;
+
+  }
+  .filters{
+    flex-direction: column;
+    width: 90%;
+
+  }
+  .select{
+    margin-bottom: 1rem;
+  }
+  .alpha{
+    margin-bottom: 1rem;
+  }
+  .pages{
+    margin: 0 40px;
+  }
+  }

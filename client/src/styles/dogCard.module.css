@@ -1,5 +1,6 @@
  .card{
-    width: 250px;
+    width: 220px;
+    height: 350px;
     margin: 40px;
     background-color: #fff;
     border-radius: 10px;
@@ -15,7 +16,34 @@
  }
  
  .image{
-    width: 100%;
-    height: 170px;
-    border-radius: 10px 10px 0px 0px;
+    width: 93%;
+    height: 160px;
+    border-radius: 10px ;
+    margin: 8px;
+}
+
+.text{
+   margin: 0 8px;
+
+   border-radius: 4px;
+   height: 40%;
+  position: relative;
+  bottom: 4px;
+  font-family: "Outfit", sans-serif;
+
+}
+.text strong{
+   color: #0a2d55;
+}
+.temperaments{
+   color: #0a2d55;
+   font-weight:300;
+   position: relative;
+   bottom: 15px;
+}
+.weight{
+   color: #0a2d55;
+   font-weight:300;
+   position: relative;
+   bottom: 8px;
 }

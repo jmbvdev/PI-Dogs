@@ -12,9 +12,12 @@ function handleClickCard() {
     return (
         <div onClick={handleClickCard} className={s.card}>  
                    <img className={s.image} src={image} alt="" />
-                   <strong>{name}</strong>
-                   <p>Temperament: {id.length>4?temperaments?.map(t=>t.name+ ", "):`${temperaments}`}</p>
-                   <p><strong>Weight: </strong>{weight}</p>
+                   <div className={s.text}>
+                    <strong>{name}</strong>
+                    <p className={s.weight}><strong>Weight: </strong>{weight}</p>
+                    <p className={s.temperaments}><strong>Temperament:</strong> {id.length>4?temperaments?.map(t=>t.name+ ", "):`${temperaments}`}</p>
+
+                   </div>
         </div>
     );
 };
