@@ -5,6 +5,7 @@ import DogCard from '../components/DogCard';
 import SearchDogs from '../components/SearchDogs.jsx';
 import { filterByOrigin, filterByRaces, filterByTemperaments, getDogs, getTemperaments, orderByAlphabet, orderByWeight } from '../redux/actions';
 import s from "../styles/home.module.css"
+import icon from "../images/dogiIcon.png"
 const Home = () => {
   const dispatch = useDispatch();
   let history = useHistory();
@@ -71,17 +72,20 @@ const Home = () => {
 
 
   return (
-    <div>
-      <header>
-        <div>
-          <h1>Dogs</h1>
-          <div>
+    <div className={s.container}>
+      <header className={s.header}>
+        <div className={s.header_search}>
+          <div className={s.logo}>
+          <img src={icon} alt="dog-icon" />
+          <h2>PuppypediA</h2>
+          </div>
+          <div className={s.search}>
             <SearchDogs />
           </div>
 
           <button onClick={handleClickCreate}>Create dog</button>
         </div>
-        <div>
+        <div className={s.filters}>
           <div className="filter-container">
             <select
               name="filterBytemperament"
@@ -126,7 +130,20 @@ const Home = () => {
           <button onClick={orderWeight}>Weight</button>
         </div>
       </header>
-      <main>
+      <div className={s.pages}>
+      {
+        page!==1&&<button onClick={()=>setPage(page-1)}>Previous</button>
+      }
+      {
+        pagesNumber.map(n=>n>0?<button onClick={()=>setPage(n)} key={n}>{n}</button>:null)
+      }
+      {
+        page!==totalPages&& <button onClick={()=>setPage(page+1)}>Next</button>
+      }
+
+      </div>
+      
+      <main className={s.cards}>
         {dogs &&
           dogsPaginated?.map((dog) => (
             <DogCard
@@ -141,15 +158,7 @@ const Home = () => {
             />
           ))}
       </main>
-      {
-        page!==1&&<button onClick={()=>setPage(page-1)}>Previous</button>
-      }
-      {
-        pagesNumber.map(n=>n>0?<button onClick={()=>setPage(n)} key={n}>{n}</button>:null)
-      }
-      {
-        page!==totalPages&& <button onClick={()=>setPage(page+1)}>Next</button>
-      }
+     
   
     </div>
   );
