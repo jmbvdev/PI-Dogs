@@ -6,6 +6,7 @@ import SearchDogs from '../components/SearchDogs.jsx';
 import { filterByOrigin, filterByRaces, filterByTemperaments, getDogs, getTemperaments, orderByAlphabet, orderByWeight } from '../redux/actions';
 import s from "../styles/home.module.css"
 import icon from "../images/dogiIcon.png"
+import Loading from '../components/Loading';
 const Home = () => {
   const dispatch = useDispatch();
   let history = useHistory();
@@ -23,6 +24,10 @@ const Home = () => {
   function handleClickCreate() {
     history.push("/create");
   }
+  function handleClickImage() {
+    history.push("/");
+  }
+
 
   function filterTemperaments(e) {
     dispatch(filterByTemperaments(e.target.value));
@@ -75,7 +80,7 @@ const Home = () => {
     <div className={s.container}>
       <header className={s.header}>
         <div className={s.header_search}>
-          <img className={s.logo} src={icon} alt="dog-icon" />
+          <img onClick={handleClickImage} className={s.logo} src={icon} alt="dog-icon" />
           <div className={s.search}>
           <h1>PuppypediA</h1>
             <SearchDogs />
@@ -143,7 +148,7 @@ const Home = () => {
       </div>
       
       <main className={s.cards}>
-        {dogs &&
+        {dogs.length?
           dogsPaginated?.map((dog) => (
             <DogCard
               key={dog.id}
@@ -155,7 +160,7 @@ const Home = () => {
               image={dog.image}
               temperaments={dog.temperaments}
             />
-          ))}
+          )):<Loading/>}
       </main>
       <div  className={s.bone}>
         <span>#{page}</span>

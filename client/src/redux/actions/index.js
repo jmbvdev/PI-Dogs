@@ -1,15 +1,16 @@
-import axios from "axios"
-const url="http://localhost:3001"
+import axios from "axios";
+const url="http://localhost:3001";
 export const GET_DOGS = "GET_DOGS";
 export const GET_DOG_DETAILS = "GET_DOG_DETAILS";
 export const SEARCH_DOGS="SEARCH_DOGS";
-export const GET_TEMPERAMENTS="GET_TEMPERAMENTS"
-export const ADD_DOG="ADD_DOG"
-export const FILTER_BY_TEMPERAMENTS="FILTER_BY_TEMPERAMENTS"
-export const FILTER_BY_RACES="FILTER_BY_RACES"
-export const FILTER_BY_ORIGIN="FILTER_BY_ORIGIN"
-export const ORDER_BY_ALPHABET="ORDER_BY_ALPHABET"
-export const ORDER_BY_WEIGHT="ORDER_BY_WEIGHT"
+export const GET_TEMPERAMENTS="GET_TEMPERAMENTS";
+export const ADD_DOG="ADD_DOG";
+export const FILTER_BY_TEMPERAMENTS="FILTER_BY_TEMPERAMENTS";
+export const FILTER_BY_RACES="FILTER_BY_RACES";
+export const FILTER_BY_ORIGIN="FILTER_BY_ORIGIN";
+export const ORDER_BY_ALPHABET="ORDER_BY_ALPHABET";
+export const ORDER_BY_WEIGHT="ORDER_BY_WEIGHT";
+export const IS_LOADING="IS_LOADING";
 
 //Get all dogs------------
 export function getDogs() {
