@@ -71,32 +71,31 @@ export default function reducer(state = initialState, action) {
         dogs:origins
       };
       case ORDER_BY_ALPHABET:
-        const orderAlphabet= state.dogs;
-        const order=
-        action.payload===true? orderAlphabet.sort((a, b) => a.name.localeCompare(b.name))
-        : orderAlphabet.sort((a, b) => b.name.localeCompare(a.name))
+       
        
         return {
           ...state,
-          dogs:order
+          dogs: action.payload===true? state.dogs?.sort((a, b) => a.name.localeCompare(b.name))
+          : state.dogs?.sort((a, b) => b.name.localeCompare(a.name))
           
         };
         case ORDER_BY_WEIGHT:
       
-          action.payload===true? 
-          state.dogs.sort((b, a) => {
+          
+          return {
+            ...state,
+            dogs:
+            action.payload===true? 
+            state.dogs.sort((b, a) => {
+              if (parseInt(a.weight)> parseInt(b.weight)) return 1;
+              if (parseInt(a.weight) <parseInt(b.weight)) return -1;
+              return 0;
+          }):
+          state.dogs.sort((a, b) => {
             if (parseInt(a.weight)> parseInt(b.weight)) return 1;
             if (parseInt(a.weight) <parseInt(b.weight)) return -1;
             return 0;
-        }):
-        state.dogs.sort((a, b) => {
-          if (parseInt(a.weight)> parseInt(b.weight)) return 1;
-          if (parseInt(a.weight) <parseInt(b.weight)) return -1;
-          return 0;
-      })
-          return {
-            ...state,
-            dogs:state.dogs
+        })
             
           };
 
