@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { addDog, getTemperaments } from '../redux/actions';
 import s from "../styles/createDog.module.css"
 const{validate}=require("../utils/validator")
@@ -7,6 +8,7 @@ const{validate}=require("../utils/validator")
 
 const CreateDog = () => {
     const dispatch= useDispatch()
+    const history= useHistory()
  
     useEffect(()=>{
      dispatch(getTemperaments())
@@ -26,6 +28,10 @@ const CreateDog = () => {
     })
     const [errors, setErrors]= useState({})
     const temperaments= useSelector((state)=>state.temperaments)
+
+    function handleClickBack() {
+      history.push("/home");
+    }
 
     function handleInputChange(e) {
       e.preventDefault();
@@ -88,11 +94,16 @@ const CreateDog = () => {
  
 
     return (
-      <div onSubmit={handleSubmit}>
-        <h1>Create your own dog</h1>
-        <form action="">
-          <div className="input-container">
-            <label title="name">Name:</label>
+      <div  className={s.container}>
+         <div className={s.btn_back}>
+            <button onClick={handleClickBack}><i class="fa-solid fa-circle-chevron-left"></i></button>
+
+            </div>
+        <div className={s.background}>
+        <form className={s.form} onSubmit={handleSubmit}>
+        <h4>CREATE YOUR OWN DOG</h4>
+          <div className={s.input_container}>
+            <label title='name'>Name: </label>
             <input
               key="name"
               type="text"
@@ -101,10 +112,10 @@ const CreateDog = () => {
               onChange={(e) => handleInputChange(e)}
               value={dog.name}
             />
-            {errors.name && <p>{errors.name}</p>}
+            {errors.name && <p className={s.error}>{errors.name}</p>}
           </div>
-          <div className="input-container">
-            <label title="minHeight">Min Height:</label>
+          <div className={s.input_container}>
+            <label title='minHeight' >Min Height:</label>
             <input
               key="minHeight"
               type="number"
@@ -115,10 +126,10 @@ const CreateDog = () => {
               min="1"
 
             />
-            {errors.minHeight && <p>{errors.minHeight}</p>}
+            {errors.minHeight && <p className={s.error}>{errors.minHeight}</p>}
           </div>
-          <div className="input-container">
-            <label title="maxHeight">Max Height:</label>
+          <div className={s.input_container}>
+            <label title="maxHeight">Máx Height:</label>
             <input
               key="maxHeight"
               type="number"
@@ -128,9 +139,9 @@ const CreateDog = () => {
               value={dog.maxHeight}
               min={dog.minHeight}
             />
-            {errors.maxHeight && <p>{errors.maxHeight}</p>}
+            {errors.maxHeight && <p className={s.error}>{errors.maxHeight}</p>}
           </div>
-          <div className="input-container">
+          <div className={s.input_container}>
             <label title="minWeight">Min Weight:</label>
             <input
               key="minWeight"
@@ -141,10 +152,10 @@ const CreateDog = () => {
               value={dog.minWeight}
               min="1"
             />
-            {errors.minWeight && <p>{errors.minWeight}</p>}
+            {errors.minWeight && <p className={s.error}>{errors.minWeight}</p>}
           </div>
-          <div className="input-container">
-            <label title="maxWeight">Max Weight:</label>
+          <div className={s.input_container}>
+            <label title="maxWeight">Máx Weight:</label>
             <input
               key="maxWeight"
               type="number"
@@ -154,9 +165,9 @@ const CreateDog = () => {
               value={dog.maxWeight}
               min={dog.minWeight}
             />
-            {errors.maxWeight && <p>{errors.maxWeight}</p>}
+            {errors.maxWeight && <p className={s.error}>{errors.maxWeight}</p>}
           </div>
-          <div className="input-container">
+          <div className={s.input_container}>
             <label title="minLife">Min life</label>
             <input
               key="minLife"
@@ -167,10 +178,10 @@ const CreateDog = () => {
               value={dog.minLife}
               min="1"
             />
-            {errors.minLife && <p>{errors.minLife}</p>}
+            {errors.minLife && <p className={s.error}>{errors.minLife}</p>}
           </div>
-          <div className="input-container">
-            <label title="maxLife">Max life</label>
+          <div className={s.input_container}>
+            <label title="maxLife">Máx life</label>
             <input
               key="maxLife"
               type="number"
@@ -180,9 +191,9 @@ const CreateDog = () => {
               value={dog.maxLife}
               min={dog.minLife}
             />
-            {errors.maxLife && <p>{errors.maxLife}</p>}
+            {errors.maxLife && <p className={s.error}>{errors.maxLife}</p>}
           </div>
-          <div className="input-container">
+          <div className={s.input_container}>
             <label title="image">Image:</label>
             <input
               key="image"
@@ -193,9 +204,9 @@ const CreateDog = () => {
               value={dog.image}
               min="1"
             />
-            {errors.image && <p>{errors.image}</p>}
+            {errors.image && <p className={s.error}>{errors.image}</p>}
           </div>
-          <div>
+          <div className={s.temperaments}>
             <label>Temperaments:</label>
             <select
               multiple={true}
@@ -206,22 +217,25 @@ const CreateDog = () => {
               value={dog.temperaments}
             >
               {temperamentSelect?.map((t) => (
-                <option value={t} key={t}>
+                <option className={s.option} value={t} key={t}>
                   {t}
                 </option>
               ))}
             </select>
+            <div className={s.temperaments_container}>
 
-            {dog.temperaments.map((t) => (
-              <div key={t}>
-                <p>{t}</p>
-                <button type="button" onClick={() => deleteTemp(t)}>
-                  x
-                </button>
-              </div>
-            ))}
+              {dog.temperaments.map((t) => (
+                <div className={s.temperament} key={t}>
+                  <button type="button" onClick={() => deleteTemp(t)}>
+                  <i class="fa-solid fa-xmark"></i>
+                  </button>
+                  <p >{t}</p>
+                </div>
+              ))}
+            </div>
+
           </div>
-          {errors.select && <p>{errors.select}</p>}
+          {errors.select && <p className={s.errors}>{errors.select}</p>}
           {(
             dog.name!=="" &&
             dog.minHeight!==""&&
@@ -232,11 +246,13 @@ const CreateDog = () => {
             dog.minLife!=="" &&
             dog.image!==""&&
             dog.temperaments.length>0
-          ) ? <button type="submit" name="submit" onClick={(e) => handleSubmit(e)}>
+          ) ? <button className={s.submit} type="submit" name="submit" onClick={(e) => handleSubmit(e)}>
           submit
-        </button>:<p>You must enter all the data to submit</p>}
+        </button>:<p className={s.errors}>You must enter all the data to submit</p>}
+          
           
         </form>
+        </div>
       </div>
     );
 };
