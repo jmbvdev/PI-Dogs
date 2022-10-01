@@ -151,6 +151,7 @@ const Home = () => {
         {dogs.length?
           dogsPaginated?.map((dog) => (
             <DogCard
+              
               key={dog.id}
               id={dog.id}
               name={dog.name}

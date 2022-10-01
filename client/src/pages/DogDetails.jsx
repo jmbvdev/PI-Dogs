@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import Loading from '../components/Loading';
@@ -10,6 +10,7 @@ const DogDetails = () => {
     const {id}=useParams()
     const dispatch=useDispatch()
     const history= useHistory()
+
  
     const dog=useSelector(state=>state.dogDetails)
    useEffect(()=>{
