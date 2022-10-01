@@ -59,6 +59,7 @@
    font-weight: 400;
     font-size: 2.5rem;
     padding-right: 30px;
+    caret-color: transparent;
 }
 .search img{
     width: 100px;
@@ -164,6 +165,7 @@ cursor: pointer;
     color: #fff;
     left: 115px;
     bottom: 54px;
+    caret-color: transparent;
    
 }
 @media only screen and (max-width: 800px) {

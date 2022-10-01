@@ -8,6 +8,7 @@ width:100%;
 
 
 
+
 }
 .background{
     margin-top: 20px;
@@ -48,6 +49,7 @@ width:100%;
     font-family: "Open Sans", sans-serif;
     width: 100%;
     margin-right: 10px;
+    caret-color: transparent;
 }
 .input_container input{
     border: none;
@@ -55,6 +57,7 @@ width:100%;
     border-radius: 25px;
     background: rgba(255, 255, 255, 0.148);
     color: #fff;
+    cursor:text;
 }
 
 .input_container input::placeholder{
@@ -169,4 +172,16 @@ width:100%;
 }
 .btn_back button i:hover{
     color:  #346cb0;
+}
+
+.complete_alert{
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+}
+.temperament_alert{
+    position: absolute;
+  
+    
 }

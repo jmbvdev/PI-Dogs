@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Alert from '../components/Alert';
+import AlertTemperament from '../components/AlertTemperament';
 import { addDog, getTemperaments } from '../redux/actions';
 import s from "../styles/createDog.module.css"
 const{validate}=require("../utils/validator")
@@ -27,6 +29,8 @@ const CreateDog = () => {
         temperaments:[]
     })
     const [errors, setErrors]= useState({})
+    const[completeAlert, setCompleteAlert]= useState(false)
+    const[temperamentAlert, setTemperamentAlert]= useState(false)
     const temperaments= useSelector((state)=>state.temperaments)
 
     function handleClickBack() {
@@ -55,7 +59,7 @@ const CreateDog = () => {
           temperaments: [...dog.temperaments, e.target.value],
         });
       } else {
-        alert("You can't add more than six temperaments!");
+        setTemperamentAlert(true)
       }
       return errors;
     }
@@ -70,6 +74,7 @@ const CreateDog = () => {
       e.preventDefault();
       setErrors(dog);
       dispatch(addDog(dog));
+      setCompleteAlert(true)
       setDog({
         name: "",
         minHeight: "",
@@ -95,6 +100,20 @@ const CreateDog = () => {
 
     return (
       <div  className={s.container}>
+        {
+          temperamentAlert&&
+          <div className={s.temperament_alert}>
+            <AlertTemperament setTemperamentAlert={setTemperamentAlert}/>
+          </div>
+        }
+        {
+          completeAlert&&
+        <div className={s.complete_alert}>
+              <Alert setCompleteAlert={setCompleteAlert}/>
+
+        </div>
+
+        }
          <div className={s.btn_back}>
             <button onClick={handleClickBack}><i class="fa-solid fa-circle-chevron-left"></i></button>
 
@@ -249,6 +268,8 @@ const CreateDog = () => {
           ) ? <button className={s.submit} type="submit" name="submit" onClick={(e) => handleSubmit(e)}>
           submit
         </button>:<p className={s.errors}>You must enter all the data to submit</p>}
+          
+      
           
           
         </form>

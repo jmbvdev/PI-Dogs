@@ -22,6 +22,7 @@
     font-family: "Poppins",serif;
     position: relative;
     top: 10px;
+    caret-color: transparent;
     
 }
 .search i{
