@@ -38,7 +38,7 @@ export default function reducer(state = initialState, action) {
       const temperament =
         action.payload === "all"
           ? filterTemperament
-          : filterTemperament.filter((e) =>
+          : state.dogs.filter((e) =>
               e.temperaments.length > 1
                 ? e.temperaments.map((e) => e.name).includes(action.payload)
                 : e.temperaments[0].includes(action.payload)
@@ -53,7 +53,7 @@ export default function reducer(state = initialState, action) {
       const races =
         action.payload === "all"
           ? filterRace
-          : filterRace.filter((e) => e.name===action.payload)
+          : state.dogs.filter((e) => e.name===action.payload)
       return {
         ...state,
         dogs:races
@@ -63,7 +63,7 @@ export default function reducer(state = initialState, action) {
       const origins =
         action.payload === "all"
           ? filterOrigin
-          : filterOrigin.filter((e) => 
+          : state.dogs.filter((e) => 
           action.payload==="db"?e.id.length>3:typeof e.id=="number"
           )
       return {
@@ -71,7 +71,7 @@ export default function reducer(state = initialState, action) {
         dogs:origins
       };
       case ORDER_BY_ALPHABET:
-        const orderAlphabet= state.allDogs;
+        const orderAlphabet= state.dogs;
         const order=
         action.payload===true? orderAlphabet.sort((a, b) => a.name.localeCompare(b.name))
         : orderAlphabet.sort((a, b) => b.name.localeCompare(a.name))
@@ -84,19 +84,19 @@ export default function reducer(state = initialState, action) {
         case ORDER_BY_WEIGHT:
       
           action.payload===true? 
-          state.allDogs.sort((b, a) => {
+          state.dogs.sort((b, a) => {
             if (parseInt(a.weight)> parseInt(b.weight)) return 1;
             if (parseInt(a.weight) <parseInt(b.weight)) return -1;
             return 0;
         }):
-        state.allDogs.sort((a, b) => {
+        state.dogs.sort((a, b) => {
           if (parseInt(a.weight)> parseInt(b.weight)) return 1;
           if (parseInt(a.weight) <parseInt(b.weight)) return -1;
           return 0;
       })
           return {
             ...state,
-            dogs:state.allDogs
+            dogs:state.dogs
             
           };
 
