@@ -15,7 +15,7 @@ const CreateDog = () => {
     useEffect(()=>{
      dispatch(getTemperaments())
 
-    },[])
+    },[dispatch])
 
     const[dog, setDog]= useState({
         name:"",
@@ -115,7 +115,7 @@ const CreateDog = () => {
 
         }
          <div className={s.btn_back}>
-            <button onClick={handleClickBack}><i class="fa-solid fa-circle-chevron-left"></i></button>
+            <button onClick={handleClickBack}><i className="fa-solid fa-circle-chevron-left"></i></button>
 
             </div>
         <div className={s.background}>
@@ -246,7 +246,7 @@ const CreateDog = () => {
               {dog.temperaments.map((t) => (
                 <div className={s.temperament} key={t}>
                   <button type="button" onClick={() => deleteTemp(t)}>
-                  <i class="fa-solid fa-xmark"></i>
+                  <i className="fa-solid fa-xmark"></i>
                   </button>
                   <p >{t}</p>
                 </div>

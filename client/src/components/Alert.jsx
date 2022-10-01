@@ -10,7 +10,7 @@ const Alert = ({setCompleteAlert}) => {
     return (
             <div className={s.created}>
                 <span>dog successfully created</span>
-                <button onClick={handleClick}><i class="fa-solid fa-rectangle-xmark"></i></button>
+                <button onClick={handleClick}><i className="fa-solid fa-rectangle-xmark"></i></button>
             </div>
        
     );

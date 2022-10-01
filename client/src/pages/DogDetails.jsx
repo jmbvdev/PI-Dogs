@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import Loading from '../components/Loading';
@@ -28,7 +28,7 @@ const DogDetails = () => {
     return (
         <div className={s.details}>
             <div className={s.btn}>
-            <button onClick={handleClickBack}><i class="fa-solid fa-circle-chevron-left"></i></button>
+            <button onClick={handleClickBack}><i className="fa-solid fa-circle-chevron-left"></i></button>
 
             </div>
             {dog.image?

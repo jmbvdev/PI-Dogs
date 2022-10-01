@@ -20,7 +20,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getDogs());
     dispatch(getTemperaments());
-  }, []);
+  }, [dispatch]);
   function handleClickCreate() {
     history.push("/create");
   }
@@ -124,7 +124,7 @@ const Home = () => {
               defaultValue={"default"}
               onChange={(e) => filterOrigin(e)}
             >
-              <option value="all">Origin</option>
+              <option value="all">DB-API</option>
               <option value="api">Only Api</option>
               <option value="db">Only DB</option>
               
