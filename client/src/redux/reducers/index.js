@@ -38,7 +38,7 @@ export default function reducer(state = initialState, action) {
       const temperament =
         action.payload === "all"
           ? filterTemperament
-          : state.dogs.filter((e) =>
+          : state.allDogs.filter((e) =>
               e.temperaments.length > 1
                 ? e.temperaments.map((e) => e.name).includes(action.payload)
                 : e.temperaments[0].includes(action.payload)
@@ -63,7 +63,7 @@ export default function reducer(state = initialState, action) {
       const origins =
         action.payload === "all"
           ? filterOrigin
-          : state.dogs.filter((e) => 
+          : state.allDogs.filter((e) => 
           action.payload==="db"?e.id.length>3:typeof e.id=="number"
           )
       return {
