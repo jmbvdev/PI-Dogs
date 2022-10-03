@@ -12,7 +12,6 @@ const SearchDogs = () => {
         e.preventDefault()
         setSearch(e.target.value)
         dispatch(searchDogs(search))
-       
     }
     
 
@@ -23,10 +22,6 @@ const SearchDogs = () => {
                 <input type="text" 
                 onChange={(e)=>handleChange(e)}
                 />
-          
-           
-
-          
         </div>
     );
 };

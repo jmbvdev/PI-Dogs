@@ -1,5 +1,5 @@
 import axios from "axios";
-const url="https://dogs-jm.herokuapp.com";
+const url="http://localhost:3001";
 export const GET_DOGS = "GET_DOGS";
 export const GET_DOG_DETAILS = "GET_DOG_DETAILS";
 export const SEARCH_DOGS="SEARCH_DOGS";
@@ -11,6 +11,8 @@ export const FILTER_BY_ORIGIN="FILTER_BY_ORIGIN";
 export const ORDER_BY_ALPHABET="ORDER_BY_ALPHABET";
 export const ORDER_BY_WEIGHT="ORDER_BY_WEIGHT";
 export const IS_LOADING="IS_LOADING";
+
+//------http://localhost:3001
 
 //Get all dogs------------
 export function getDogs() {
@@ -82,7 +84,7 @@ export function addDog({name,
     image,
     temperaments}) {
     return async function(){
-        var resp = await axios.post("https://dogs-jmbv.netlify.app/dogs",{
+        var resp = await axios.post("http://localhost:3001/dogs",{
             name,
             height:`${minHeight} - ${maxHeight}`,
             weight:`${minWeight} - ${maxWeight}`,
@@ -90,6 +92,7 @@ export function addDog({name,
             image,
             temperaments
         })
+        console.log(resp)
         return resp
   }
 

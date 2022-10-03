@@ -6,6 +6,7 @@ import AlertTemperament from '../components/AlertTemperament';
 import { addDog, getTemperaments } from '../redux/actions';
 import s from "../styles/createDog.module.css"
 const{validate}=require("../utils/validator")
+const{temperamentsUnic}=require("../utils/unics")
 
 
 const CreateDog = () => {
@@ -16,6 +17,8 @@ const CreateDog = () => {
      dispatch(getTemperaments())
 
     },[dispatch])
+
+//----------------local states--------------------------------
 
     const[dog, setDog]= useState({
         name:"",
@@ -32,6 +35,8 @@ const CreateDog = () => {
     const[completeAlert, setCompleteAlert]= useState(false)
     const[temperamentAlert, setTemperamentAlert]= useState(false)
     const temperaments= useSelector((state)=>state.temperaments)
+
+//---Handlers----------------------------------------------------
 
     function handleClickBack() {
       history.push("/home");
@@ -50,6 +55,7 @@ const CreateDog = () => {
         })
       );
     }
+
     function handleErrorSelect(e) {
       if (dog.temperaments.includes(e.target.value)) {
         errors.select = "Remember you can't add the same temperament!";
@@ -70,6 +76,7 @@ const CreateDog = () => {
             temperaments:dog.temperaments.filter((t)=>t !==temp)
         })
     }
+
     function handleSubmit(e) {
       e.preventDefault();
       setErrors(dog);
@@ -88,14 +95,11 @@ const CreateDog = () => {
       });
       setErrors({});
     }
+
+    // function validate erors------------------------------------------
     validate(dog)
+
   
-     const temperamentsUnic=[]
-     for (let i = 0; i < temperaments.length; i++) {
-      temperamentsUnic.push(temperaments[i].name)
-      
-     }
-    const temperamentSelect=[...new Set(temperamentsUnic)]
  
 
     return (
@@ -235,7 +239,7 @@ const CreateDog = () => {
               required
               value={dog.temperaments}
             >
-              {temperamentSelect?.map((t) => (
+              {temperamentsUnic(temperaments)?.map((t) => (
                 <option className={s.option} value={t} key={t}>
                   {t}
                 </option>
@@ -268,10 +272,6 @@ const CreateDog = () => {
           ) ? <button className={s.submit} type="submit" name="submit" onClick={(e) => handleSubmit(e)}>
           submit
         </button>:<p className={s.errors}>You must enter all the data to submit</p>}
-          
-      
-          
-          
         </form>
         </div>
       </div>

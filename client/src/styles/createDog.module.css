@@ -1,20 +1,17 @@
-.container{
-display: flex;
-justify-content: center;
-justify-items: center;
-align-items: center;
-height: auto;
-width:100%;
-
-
-
-
+.container {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
 }
-.background{
+
+.background {
     margin-top: 20px;
-	width:500px;
-	min-height:450px;
-	position:relative;
+    width: 500px;
+    min-height: 450px;
+    position: relative;
     background-image: url(https://c.tenor.com/VND3XfDxlqAAAAAC/golden-retriever-smile.gif);
     border-radius: 15px;
     background-size: cover;
@@ -23,55 +20,56 @@ width:100%;
     margin-bottom: 10rem;
 
 }
-.form{
-    
+
+.form {
     padding: 50px;
     height: 100%;
-  
     border-radius: 15px;
     background: rgba(45, 64, 118, 0.576);
-   
     box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
-
 }
-.form h4{
+
+.form h4 {
     font-family: "Open Sans", sans-serif;
     color: #fff;
 }
 
-.input_container{
+.input_container {
     color: rgb(194, 191, 191);
     display: block;
     margin-bottom: 10px;
 }
-.input_container label{
+
+.input_container label {
     font-size: 12px;
     font-family: "Open Sans", sans-serif;
     width: 100%;
     margin-right: 10px;
     caret-color: transparent;
 }
-.input_container input{
+
+.input_container input {
     border: none;
     padding: 5px 10px;
     border-radius: 25px;
     background: rgba(255, 255, 255, 0.148);
     color: #fff;
-    cursor:text;
+    cursor: text;
 }
 
-.input_container input::placeholder{
- 
+.input_container input::placeholder {
     color: rgba(255, 255, 255, 0.306);
 }
-.temperaments label{
+
+.temperaments label {
     font-size: 12px;
     font-family: "Open Sans", sans-serif;
     width: 100%;
     margin-right: 10px;
     color: rgb(194, 191, 191);
 }
-.temperaments select{
+
+.temperaments select {
     min-width: 10em;
     padding: 0.5em 1em;
     background: transparent;
@@ -81,10 +79,10 @@ width:100%;
     font: inherit;
     display: block;
     margin-top: 10px;
-    overflow:auto
+    overflow: auto
 }
 
-.option{
+.option {
     color: rgb(194, 191, 191);
     font-family: "Outfit", sans-serif;
     font-weight: normal;
@@ -94,8 +92,8 @@ width:100%;
     padding: 0px 2px 1px;
 }
 
-.temperament{
-    background-color:transparent;
+.temperament {
+    background-color: transparent;
     width: 100px;
     position: relative;
     right: 0;
@@ -103,29 +101,33 @@ width:100%;
     justify-content: center;
     align-items: center;
     color: rgb(194, 191, 191);
-    font: inherit;
     font-family: "Outfit", sans-serif;
 }
-.temperament button{
+
+.temperament button {
     background-color: transparent;
     border: none;
 }
-.temperament button i{
+
+.temperament button i {
     color: rgba(255, 10, 10, 0.705);
     font-size: 12px;
 }
-.temperament button i:hover{
+
+.temperament button i:hover {
     cursor: pointer;
 }
-.temperaments_container{
+
+.temperaments_container {
     display: flex;
     flex-wrap: wrap;
     justify-items: center;
     justify-content: center;
     align-items: center;
 }
-.errors{
-    color:#fff;
+
+.errors {
+    color: #fff;
     font-size: 15px;
     font-family: "Outfit", sans-serif;
     background-color: rgb(255, 103, 103);
@@ -133,56 +135,63 @@ width:100%;
     padding-left: 10px;
     width: 85%;
 }
-.error{
+
+.error {
     color: rgb(255, 103, 103);
     font-size: 15px;
     font-family: "Outfit", sans-serif;
     width: 100%;
 }
-.submit{
+
+.submit {
     padding: 4px 12px;
     background-color: #1563bd;
     color: #fff;
     border-radius: 5px;
     border: none;
 }
-.submit:hover{
+
+.submit:hover {
     background-color: #3981d3;
-   cursor: pointer;
+    cursor: pointer;
 }
-.btn_back{
+
+.btn_back {
     position: absolute;
     left: 0;
     top: 0;
     z-index: 1;
     caret-color: transparent;
 }
-.btn_back button{
+
+.btn_back button {
     position: relative;
-    top:2rem;
+    top: 2rem;
     left: 10vw;
     background-color: transparent;
     border: none;
 }
-.btn_back button:hover{
-  cursor: pointer;
+
+.btn_back button:hover {
+    cursor: pointer;
 }
-.btn_back button i{
+
+.btn_back button i {
     font-size: 3rem;
     color: #103d74;
 }
-.btn_back button i:hover{
-    color:  #346cb0;
+
+.btn_back button i:hover {
+    color: #346cb0;
 }
 
-.complete_alert{
+.complete_alert {
     position: absolute;
     top: 0;
     right: 0;
-    
+
 }
-.temperament_alert{
+
+.temperament_alert {
     position: absolute;
-  
-    
 }

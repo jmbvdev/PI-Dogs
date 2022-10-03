@@ -17,38 +17,38 @@ function validate(dog) {
     }
     //max Height
      if (!dog.maxHeight) {
-      errors.maxHeight = "Max Height is required";
+      errors.maxHeight = "Máx Height is required";
     }  if (+dog.maxHeight <= +dog.minHeight) {
       errors.maxHeight =
-        "The maximum height cannot be less or equal than the minimum height";
+        "The máximum height cannot be less or equal than the minimum height";
     }
     //min Weight
     else if (!dog.minWeight) {
       errors.minWeight = "Min Weight is required";
     } else if (+dog.minWeight >= +dog.maxWeight) {
       errors.minWeight =
-        "The minimum weight cannot be greater or equal than the maximum weight";
+        "The minimum weight cannot be greater or equal than the máximum weight";
     }
     //max Weight
     else if (!dog.maxWeight) {
-      errors.maxWeight = "Max Weight is required";
+      errors.maxWeight = "Máx Weight is required";
     } else if (+dog.maxWeight <= +dog.minWeight) {
       errors.maxWeight =
-        "The maximum weight cannot be less or equal than the minimum weight";
+        "The máximum weight cannot be less or equal than the minimum weight";
     }
     //min Life
     else if (!dog.minLife) {
       errors.minLife = "Min Life span is required";
     } else if (+dog.minLife >= +dog.maxLife) {
       errors.minLife =
-        "The minimum life span cannot be greater or equal than the maximum life span";
+        "The minimum life span cannot be greater or equal than the máximum life span";
     }
     //max life span
     else if (!dog.maxLife) {
       errors.maxLife = "Max Life span is required";
     } else if (+dog.maxLife <= +dog.minLife) {
       errors.maxLife =
-        "The maximum life span cannot be less or equal than the minimum life span";
+        "The máximum life span cannot be less or equal than the minimum life span";
     }
     //image
     else if (!dog.image) {

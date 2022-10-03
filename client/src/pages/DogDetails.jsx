@@ -10,7 +10,6 @@ const DogDetails = () => {
     const {id}=useParams()
     const dispatch=useDispatch()
     const history= useHistory()
-
  
     const dog=useSelector(state=>state.dogDetails)
    useEffect(()=>{
@@ -18,7 +17,7 @@ const DogDetails = () => {
      
    },[id, dispatch])
 
-   
+ //--------handler click--------------------
    function handleClickCreate() {
     history.push("/create");
   }

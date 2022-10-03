@@ -7,6 +7,8 @@ import { filterByOrigin, filterByRaces, filterByTemperaments, getDogs, getTemper
 import s from "../styles/home.module.css"
 import icon from "../images/dogiIcon.png"
 import Loading from '../components/Loading';
+const{temperamentsUnic,dogsUnic}=require("../utils/unics")
+
 const Home = () => {
   const dispatch = useDispatch();
   let history = useHistory();
@@ -21,6 +23,8 @@ const Home = () => {
     dispatch(getDogs());
     dispatch(getTemperaments());
   }, [dispatch]);
+
+  //Handler Click----------------------------------------
   function handleClickCreate() {
     history.push("/create");
   }
@@ -28,7 +32,7 @@ const Home = () => {
     history.push("/");
   }
 
-
+// Filters---------------------------------------
   function filterTemperaments(e) {
     dispatch(filterByTemperaments(e.target.value));
     setPage(1)
@@ -52,19 +56,9 @@ const Home = () => {
     setPage(1)
   }
 
-  const temperamentsUnic = [];
-  for (let i = 0; i < temperaments.length; i++) {
-    temperamentsUnic.push(temperaments[i].name);
-  }
-  const temperamentSelect = [...new Set(temperamentsUnic)];
 
-  const dogsUnic = [];
-  for (let i = 0; i < dogs.length; i++) {
-    dogsUnic.push(dogs[i].name);
-  }
-  const raceSelect = [...new Set(dogsUnic)];
 
-  //Pagination
+  //Pagination--------------------------------------------
   const dogsPerPage=8;
   const lastIndex=page*dogsPerPage;
   const firstIndex=lastIndex-dogsPerPage; 
@@ -74,7 +68,7 @@ const Home = () => {
   for (let i = 0; i < totalPages; i++) {
     pagesNumber.push(i)
   }
-
+  //---------------------------------------------------------------
 
   return (
     <div className={s.container}>
@@ -97,7 +91,7 @@ const Home = () => {
             >
               
               <option value="all">Temperaments</option>
-              {temperamentSelect?.map((t) => (
+              {temperamentsUnic(temperaments)?.map((t) => (
                 <option key={t} value={t}>
                   {t}
                 </option>
@@ -111,7 +105,7 @@ const Home = () => {
               onChange={(e) => filterRaces(e)}
             >
               <option value="all">Breeds</option>
-              {raceSelect?.map((r) => (
+              {dogsUnic(dogs)?.map((r) => (
                 <option key={r} value={r}>
                   {r}
                 </option>
@@ -151,7 +145,6 @@ const Home = () => {
         {dogs.length?
           dogsPaginated?.map((dog) => (
             <DogCard
-              
               key={dog.id}
               id={dog.id}
               name={dog.name}
@@ -165,7 +158,6 @@ const Home = () => {
       </main>
       <div  className={s.bone}>
         <span>#{page}</span>
-
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Bone_noun_71979_cc.svg/1280px-Bone_noun_71979_cc.svg.png" alt="bone" />
       </div>
   

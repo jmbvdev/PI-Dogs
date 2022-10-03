@@ -1,4 +1,4 @@
-.details{
+.details {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -7,108 +7,125 @@
     align-items: center;
     caret-color: transparent;
 }
-.container{
+
+.container {
     width: 800px;
     height: auto;
     display: flex;
 
 }
-.container img{
+
+.container img {
     width: 60%;
     border-radius: 15px 0px 0px 15px;
-    
+
 }
-.text{
+
+.text {
     border-radius: 0px 15px 15px 0px;
     padding: 20px;
-    width:40%;
+    width: 40%;
     background-color: #103d74;
 }
-.text h1{
-color: #d3e7ff;
-font-family:'DM Serif Text', serif;
-font-weight: 400;
+
+.text h1 {
+    color: #d3e7ff;
+    font-family: 'DM Serif Text', serif;
+    font-weight: 400;
 }
-.specs{
+
+.specs {
     background-color: #103d74;
     border-radius: 10px;
-    color:#fff ;
-    font-family: "Outfit",sans-serif;
+    color: #fff;
+    font-family: "Outfit", sans-serif;
 }
-.specs p{
+
+.specs p {
     font-weight: lighter;
 }
-.specs strong{
-    font-weight:400;
+
+.specs strong {
+    font-weight: 400;
 }
-.specs button{
+
+.specs button {
     padding: 8px 10px;
     border-radius: 24px;
-    border :none;
+    border: none;
     font-size: 15px;
     font-family: "Outfit", serif;
     font-weight: bolder;
     background-color: rgb(50, 156, 177);
     color: #fff;
 }
-.specs button:hover{
-   
+
+.specs button:hover {
+
     background-color: rgb(130, 205, 220);
     cursor: pointer;
- 
+
 }
-.btn{
+
+.btn {
     position: absolute;
     left: 0;
     top: 0;
 }
-.btn button{
+
+.btn button {
     position: relative;
-    top:2rem;
+    top: 2rem;
     left: 10vw;
     background-color: transparent;
     border: none;
 }
-.btn button:hover{
-  cursor: pointer;
+
+.btn button:hover {
+    cursor: pointer;
 }
-.btn button i{
+
+.btn button i {
     font-size: 3rem;
     color: #103d74;
 }
-.btn button i:hover{
-    color:  #346cb0;
+
+.btn button i:hover {
+    color: #346cb0;
 }
+
 @media only screen and (max-width: 800px) {
-    .details{
+    .details {
         margin-top: 5rem;
     }
-   
-    .container{
+
+    .container {
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 400px;
         margin: 20px;
-     
-    
+
+
     }
 
-    .container img{
+    .container img {
         border-radius: 15px 15px 0px 0px;
         width: 100%;
     }
 
-     .text{
-         border-radius: 0px 0px 15px 15px;
-         width: 100%;
-         padding: 0;
+    .text {
+        border-radius: 0px 0px 15px 15px;
+        width: 100%;
+        padding: 0;
     }
-    .specs{
+
+    .specs {
         padding: 20px;
     }
-    .text h1{
+
+    .text h1 {
         padding-left: 20px;
     }
-   
+
 }
