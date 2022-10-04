@@ -380,5 +380,32 @@ cursor: pointer;
   .pages{
     margin: 0 40px;
   }
+  .dark_logo{
+    display: none;
+}
+.dark_search h1{
+    display: none;
+}
+.dark_header_search{
+flex-direction: column;
+}
+.dark_create{
+margin: 1rem;
+
+}
+.dark_filters{
+flex-direction: column;
+width: 90%;
+
+}
+.dark_select{
+margin-bottom: 1rem;
+}
+.dark_alpha{
+margin-bottom: 1rem;
+}
+.dark_pages{
+margin: 0 40px;
+}
   }
   
