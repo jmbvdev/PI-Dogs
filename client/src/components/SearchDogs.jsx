@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux"
 import{searchDogs}from "../redux/actions/index"
 import s from "../styles/search.module.css"
 
-const SearchDogs = () => {
+const SearchDogs = ({dark}) => {
      const dispatch= useDispatch()
      const[search, setSearch]= useState("")
 
@@ -16,7 +16,7 @@ const SearchDogs = () => {
     
 
     return (
-        <div className={s.search}>
+        <div className={dark?s.dark_search:s.search}>
             <p>Search by breed</p>
             <i className="fa-solid fa-paw"></i>
                 <input type="text" 

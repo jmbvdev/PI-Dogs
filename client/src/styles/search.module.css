@@ -36,4 +36,41 @@
   
 
 }
+/* -------------dark mode--------------- */
+.dark_search{
+    display: flex;
+    flex-direction: column;
 
+}
+.dark_search input{
+    background-color: transparent;
+    border: 1px #061b33 solid;
+    border-radius: 8px;
+    position: relative;
+    bottom: 15px;
+    padding: auto;
+    color: #061b33;
+    padding-left: 2rem;
+    
+}
+.dark_search p{
+    color: #061b33;
+    font-weight: bold;
+    display: block;
+    font-family: "Poppins",serif;
+    position: relative;
+    top: 15px;
+    caret-color: transparent;
+    
+}
+.dark_search i{
+    color:#061b33;
+   position:relative;
+   left: 1%;
+   top: 3px;
+   font-size: 15px;
+   padding-right: 10px;
+   padding-left: 5px;
+  
+
+}

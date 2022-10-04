@@ -7,6 +7,7 @@ import { filterByOrigin, filterByRaces, filterByTemperaments, getDogs, getTemper
 import s from "../styles/home.module.css"
 import icon from "../images/dogiIcon.png"
 import Loading from '../components/Loading';
+import Config from './Config';
 const{temperamentsUnic,dogsUnic}=require("../utils/unics")
 
 const Home = () => {
@@ -17,7 +18,10 @@ const Home = () => {
   const [alphabet, setalphabet] = useState(true);
   const [weight, setWeight] = useState(true);
   const[page, setPage]=useState(1)
-  
+  const[config, setConfig]= useState(false)
+  const [dogsPerPage, setDogsPerPage]=useState(8)
+
+  const dark= useSelector(state=>state.dark)
 
   useEffect(() => {
     dispatch(getDogs());
@@ -30,6 +34,11 @@ const Home = () => {
   }
   function handleClickImage() {
     history.push("/");
+  }
+
+  function handleConfig() {
+    setConfig(!config)
+    
   }
 
 // Filters---------------------------------------
@@ -59,7 +68,7 @@ const Home = () => {
 
 
   //Pagination--------------------------------------------
-  const dogsPerPage=8;
+  //const dogsPerPage=8;
   const lastIndex=page*dogsPerPage;
   const firstIndex=lastIndex-dogsPerPage; 
   const dogsPaginated=dogs.slice(firstIndex,lastIndex);
@@ -71,19 +80,21 @@ const Home = () => {
   //---------------------------------------------------------------
 
   return (
-    <div className={s.container}>
+    <div className={dark? s.dark_container:s.container}>
+      
+  
       <header className={s.header}>
-        <div className={s.header_search}>
+        <div className={dark? s.dark_header_search:s.header_search}>
           <img onClick={handleClickImage} className={s.logo} src={icon} alt="dog-icon" />
           <div className={s.search}>
           <h1>PuppypediA</h1>
-            <SearchDogs />
+            <SearchDogs dark={dark}/>
           </div>
-          <button className={s.create} onClick={handleClickCreate}>  <i className="fa-solid fa-plus"></i>Add dog</button>
+          <button className={dark?s.dark_create:s.create} onClick={handleClickCreate}>  <i className="fa-solid fa-plus"></i>Add dog</button>
 
         </div>
         <div className={s.filters}>
-          <div className={s.select}>
+          <div className={dark?s.dark_select:s.select}>
             <select
               name="filterBytemperament"
               defaultValue={"default"}
@@ -98,7 +109,7 @@ const Home = () => {
               ))}
             </select>
           </div>
-          <div className={s.select}>
+          <div className={dark?s.dark_select:s.select}>
             <select
               name="filterByRace"
               defaultValue={"default"}
@@ -112,7 +123,7 @@ const Home = () => {
               ))}
             </select>
           </div>
-          <div className={s.select}>
+          <div className={dark?s.dark_select:s.select}>
             <select
               name="filterByOrigin"
               defaultValue={"default"}
@@ -124,22 +135,23 @@ const Home = () => {
               
             </select>
           </div>
-          <button className={s.alpha} onClick={orderAlphabetical}>{alphabet? <i className="fa-solid fa-arrow-up-a-z"></i>: <i className="fa-solid fa-arrow-down-z-a"></i>}</button>
-          <button className={s.alpha} onClick={orderWeight}><i className="fa-solid fa-weight-hanging"></i></button>
+          <button className={dark?s.dark_alpha:s.alpha} onClick={orderAlphabetical}>{alphabet? <i className="fa-solid fa-arrow-up-a-z"></i>: <i className="fa-solid fa-arrow-down-z-a"></i>}</button>
+          <button className={dark?s.dark_alpha:s.alpha} onClick={orderWeight}><i className="fa-solid fa-weight-hanging"></i></button>
         </div>
       </header>
       <div className={s.pages}>
       {
-        page!==1&&<button className={s.page_number} onClick={()=>setPage(page-1)}><i className="fa-solid fa-circle-left"></i></button>
+        page!==1&&<button className={dark?s.dark_page_number:s.page_number} onClick={()=>setPage(page-1)}><i className="fa-solid fa-circle-left"></i></button>
       }
       {
-        pagesNumber.map(n=>n>0?<button className={s.page_number} onClick={()=>setPage(n)} key={n}>{n}</button>:null)
+        pagesNumber.map(n=>n>0?<button className={dark?s.dark_page_number:s.page_number} onClick={()=>setPage(n)} key={n}>{n}</button>:null)
       }
       {
-        page!==totalPages&& <button className={s.page_number} onClick={()=>setPage(page+1)}><i className="fa-solid fa-circle-right"></i></button>
+        page!==totalPages&& <button className={dark?s.dark_page_number:s.page_number} onClick={()=>setPage(page+1)}><i className="fa-solid fa-circle-right"></i></button>
       }
 
       </div>
+     
       
       <main className={s.cards}>
         {dogs.length?
@@ -155,12 +167,19 @@ const Home = () => {
               temperaments={dog.temperaments}
             />
           )):<Loading/>}
+          
       </main>
+      {
+        config?<Config setConfig={setConfig} setDogsPerPage={setDogsPerPage} dark={dark} />:
+      <div className={dark?s.dark_config:s.config}>
+      <button onClick={handleConfig}><i className="fa-solid fa-gear"></i></button>
+      </div>
+      }
       <div  className={s.bone}>
         <span>#{page}</span>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Bone_noun_71979_cc.svg/1280px-Bone_noun_71979_cc.svg.png" alt="bone" />
       </div>
-  
+   
     </div>
   );
 };

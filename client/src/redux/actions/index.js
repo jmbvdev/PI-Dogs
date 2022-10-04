@@ -10,7 +10,7 @@ export const FILTER_BY_RACES="FILTER_BY_RACES";
 export const FILTER_BY_ORIGIN="FILTER_BY_ORIGIN";
 export const ORDER_BY_ALPHABET="ORDER_BY_ALPHABET";
 export const ORDER_BY_WEIGHT="ORDER_BY_WEIGHT";
-export const IS_LOADING="IS_LOADING";
+export const DARK_MODE="DARK_MODE";
 
 //------http://localhost:3001
 
@@ -72,7 +72,6 @@ export function getTemperaments() {
       .catch((err) => console.log(err));
   };
 }
-
 
 export function addDog({name,
     minHeight,
@@ -144,3 +143,12 @@ export function filterByTemperaments(payload){
         
             })
             }
+            export function isDark(payload){
+        
+              return  ({
+                  type:DARK_MODE,
+                  payload,
+          
+              })
+              }
+            

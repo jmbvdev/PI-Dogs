@@ -93,6 +93,102 @@
 .btn button i:hover {
     color: #346cb0;
 }
+/* ----------------dark mode------------------------ */
+.dark_details{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    caret-color: transparent;
+    background-color: #011e40;
+}
+.dark_container{
+    width: 800px;
+    height: auto;
+    display: flex;
+}
+
+.dark_container img{
+    width: 60%;
+    border-radius: 15px 0px 0px 15px;
+}
+
+.dark_btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.dark_btn button {
+    position: relative;
+    top: 2rem;
+    left: 10vw;
+    background-color: transparent;
+    border: none;
+}
+
+.dark_btn button:hover {
+    cursor: pointer;
+}
+
+.dark_btn button i {
+    font-size: 3rem;
+    color: #e4f0ff;
+}
+
+.dark_btn button i:hover {
+    color: #346cb0;
+}
+
+
+.dark_text {
+    border-radius: 0px 15px 15px 0px;
+    padding: 20px;
+    width: 40%;
+    background-color: #d1e0f2;
+}
+
+.dark_text h1 {
+    color: #103d74;
+    font-family: 'DM Serif Text', serif;
+    font-weight: 400;
+}
+
+
+.dark_specs {
+    background-color: #d1e0f2;
+    border-radius: 10px;
+    color: #103d74;
+    font-family: "Outfit", sans-serif;
+}
+
+.dark_specs p {
+    font-weight: lighter;
+}
+
+.dark_specs strong {
+    font-weight: 400;
+}
+
+.dark_specs button {
+    padding: 8px 10px;
+    border-radius: 24px;
+    border: none;
+    font-size: 15px;
+    font-family: "Outfit", serif;
+    font-weight: bolder;
+    background-color: #103d74;
+    color: #fff;
+}
+
+.dark_specs button:hover {
+
+    background-color: rgb(130, 205, 220);
+    cursor: pointer;
+
+}
 
 @media only screen and (max-width: 800px) {
     .details {

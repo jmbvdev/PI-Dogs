@@ -12,6 +12,7 @@ const DogDetails = () => {
     const history= useHistory()
  
     const dog=useSelector(state=>state.dogDetails)
+    const dark= useSelector(state=>state.dark)
    useEffect(()=>{
        dispatch(getDogDetails(id))
      
@@ -26,17 +27,17 @@ const DogDetails = () => {
   }
 
     return (
-        <div className={s.details}>
-            <div className={s.btn}>
+        <div className={dark? s.dark_details:s.details}>
+            <div className={dark? s.dark_btn:s.btn}>
             <button onClick={handleClickBack}><i className="fa-solid fa-circle-chevron-left"></i></button>
 
             </div>
             {dog.image?
-            <div className={s.container}>
+            <div className={dark?s.dark_container:s.container}>
                 <img src={dog.image} alt="" />
-                <div className={s.text}>
+                <div className={dark?s.dark_text:s.text}>
                     <h1>{dog.name}</h1>
-                    <div className={s.specs}>
+                    <div className={dark? s.dark_specs:s.specs}>
                         <p><strong>Temperament: </strong>{id.length>3?dog?.temperaments?.map(t=>t.name+ ", "):`${dog?.temperaments?.[0]}`}</p>
                         <p><strong>Height: </strong>{dog.height}</p>
                         <p><strong>Weight: </strong>{dog.weight}</p>

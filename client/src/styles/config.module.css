@@ -1,0 +1,126 @@
+.container{
+
+    position: absolute; 
+    top: 0;
+    width: 100%; 
+    height: 100vh; 
+    background-color: rgba(7, 21, 126, 0.464); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.panel_container{
+    z-index: 1;
+    position: fixed;
+    width: 70vmin;
+    height: 400px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    background-image: url(https://img.freepik.com/vector-premium/perros-patrones-fisuras_106421-128.jpg?w=740);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.panel{
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: left;
+    align-items: left;
+ background-color: rgba(255, 255, 255, 0.906);
+ padding: 40px;
+ border-radius: 40px;
+font-family:"Outfit" ,sans-serif;
+font-weight: bold;
+ color: #062a54;
+
+    
+}
+.select{
+    display: flex;
+    width: 70%;
+    justify-content: left;
+    align-items: center;
+    
+    
+}
+.select select{
+    margin-left: 20px;
+    width: 100px;
+    height: 2rem;
+    font-family: "Outfit" ,sans-serif;
+    background-color: #062a54;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.dark{
+    display: flex;
+    
+}
+.dark button{
+    margin-left: 15px;
+    background-color: transparent;
+    border: none;
+}
+.dark button i{
+    font-size: 30px;
+  color: #0a396f;
+}
+.dark button i:hover{
+   
+  color: #106ed9;
+  cursor: pointer;
+}
+.close{
+    position: absolute;
+top: 0;
+right: 0;
+margin-top: 10px;
+margin-right: 20px;
+background-color: transparent;
+border: none;
+}
+.close i{
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+    text-shadow:4px 4px #1201aa;
+    caret-color: transparent;
+}
+.close i:hover{
+    cursor: pointer;
+}
+.social{
+    width: 70%;
+    margin: 10px;
+    margin-left: 20%;
+  
+}
+.social button{
+    background-color: transparent;
+    border: none;
+    margin-right: 30px;
+}
+.social button a{
+   text-decoration: none;
+   color: #062a54;
+   font-size: 30px;
+}
+.social button a:hover{
+   
+    color: #1d64b6;
+    cursor: pointer;
+  
+ }
+ .develop{
+    display: inline-block;
+    margin: 0 auto;
+   position: relative;
+   top: 20px;
+ }

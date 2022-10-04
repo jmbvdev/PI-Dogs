@@ -35,6 +35,7 @@ const CreateDog = () => {
     const[completeAlert, setCompleteAlert]= useState(false)
     const[temperamentAlert, setTemperamentAlert]= useState(false)
     const temperaments= useSelector((state)=>state.temperaments)
+    const dark= useSelector(state=>state.dark)
 
 //---Handlers----------------------------------------------------
 
@@ -57,6 +58,7 @@ const CreateDog = () => {
     }
 
     function handleErrorSelect(e) {
+  
       if (dog.temperaments.includes(e.target.value)) {
         errors.select = "Remember you can't add the same temperament!";
       } else if (dog.temperaments.length < 6) {
@@ -103,7 +105,7 @@ const CreateDog = () => {
  
 
     return (
-      <div  className={s.container}>
+      <div  className={dark? s.dark_container:s.container}>
         {
           temperamentAlert&&
           <div className={s.temperament_alert}>
@@ -118,7 +120,7 @@ const CreateDog = () => {
         </div>
 
         }
-         <div className={s.btn_back}>
+         <div className={dark?s.dark_btn_back:s.btn_back}>
             <button onClick={handleClickBack}><i className="fa-solid fa-circle-chevron-left"></i></button>
 
             </div>

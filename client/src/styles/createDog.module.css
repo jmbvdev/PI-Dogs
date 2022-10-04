@@ -7,6 +7,7 @@
     width: 100%;
 }
 
+
 .background {
     margin-top: 20px;
     width: 500px;
@@ -185,6 +186,7 @@
     color: #346cb0;
 }
 
+
 .complete_alert {
     position: absolute;
     top: 0;
@@ -194,4 +196,44 @@
 
 .temperament_alert {
     position: absolute;
+}
+
+/* -----------dark mode -------*/
+
+.dark_container{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    background-color: #0a2a51;
+}
+.dark_btn_back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    caret-color: transparent;
+}
+
+.dark_btn_back button {
+    position: relative;
+    top: 2rem;
+    left: 10vw;
+    background-color: transparent;
+    border: none;
+}
+
+.dark_btn_back button:hover {
+    cursor: pointer;
+}
+
+.dark_btn_back button i {
+    font-size: 3rem;
+    color: #b3d4fc;
+}
+
+.dark_btn_back button i:hover {
+    color: #346cb0;
 }
