@@ -7,11 +7,13 @@ const AlertTemperament = ({setTemperamentAlert}) => {
             setTemperamentAlert(false)
         }
     return (
-        <div className={s.alert} >
-            <button onClick={handleClick}><i className="fa-solid fa-xmark"></i></button>
-                <i className="fa-solid fa-triangle-exclamation"></i>
-                <h2>You can't add more than six temperaments!</h2>
-            </div>
+      <div className={s.alert}>
+        <button onClick={handleClick}>
+          <i className="fa-solid fa-xmark"></i>
+        </button>
+        <i className="fa-solid fa-triangle-exclamation"></i>
+        <h2>You can't add more than six temperaments!</h2>
+      </div>
     );
 };
 

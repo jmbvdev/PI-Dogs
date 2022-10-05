@@ -1,5 +1,4 @@
 .container{
-
     position: absolute; 
     top: 0;
     width: 100%; 
@@ -7,8 +6,7 @@
     background-color: rgba(7, 21, 126, 0.464); 
     display: flex;
     justify-content: center;
-    align-items: center;
-    
+    align-items: center; 
 }
 .panel_container{
     z-index: 1;
@@ -21,9 +19,10 @@
     justify-content: center;
     justify-items: center;
     align-items: center;
-    background-image: url(https://img.freepik.com/vector-premium/perros-patrones-fisuras_106421-128.jpg?w=740);
+    background-image: url("../images/dog-config.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
 
 }
 .panel{
@@ -33,12 +32,12 @@
     justify-content: center;
     justify-items: left;
     align-items: left;
- background-color: rgba(255, 255, 255, 0.906);
+ background-color: rgba(255, 255, 255, 0.511);
  padding: 40px;
  border-radius: 40px;
 font-family:"Outfit" ,sans-serif;
 font-weight: bold;
- color: #062a54;
+color: #0a396fc9;
 
     
 }
@@ -52,12 +51,14 @@ font-weight: bold;
 }
 .select select{
     margin-left: 20px;
-    width: 100px;
+    width: 150px;
     height: 2rem;
     font-family: "Outfit" ,sans-serif;
-    background-color: #062a54;
-    color: #fff;
+    background-color: #062a545b;
+    border: none;
+    color: rgb(255, 255, 255);
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .dark{
@@ -71,36 +72,39 @@ font-weight: bold;
 }
 .dark button i{
     font-size: 30px;
-  color: #0a396f;
+  color: #0a396fc9;
 }
 .dark button i:hover{
    
-  color: #106ed9;
+  color: #053264;
   cursor: pointer;
 }
 .close{
-    position: absolute;
+position: absolute;
 top: 0;
 right: 0;
 margin-top: 10px;
 margin-right: 20px;
 background-color: transparent;
 border: none;
+cursor: pointer;
 }
 .close i{
     font-size: 50px;
-    color: rgb(0, 0, 0);
+    color: #072342c9;
     text-shadow:4px 4px #dfdcf5;
     caret-color: transparent;
 }
 .close i:hover{
     cursor: pointer;
+    color: #12529bc9;
 }
 .social{
     width: 100%;
     margin: 20px;
     padding-right: 20%;
-    flex-wrap:nowrap
+    flex-wrap:nowrap;
+    caret-color: transparent;
   
 }
 .social button{
@@ -110,7 +114,7 @@ border: none;
 }
 .social button a{
    text-decoration: none;
-   color: #062a54;
+   color: #0a396fc9;
    font-size: 30px;
 }
 .social button a:hover{

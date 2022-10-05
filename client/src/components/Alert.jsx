@@ -4,7 +4,6 @@ import s from "../styles/alert.module.css"
 const Alert = ({setCompleteAlert}) => {
     function handleClick() {
         setCompleteAlert(false)
-
     }
     return (
             <div className={s.created}>

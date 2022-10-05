@@ -5,7 +5,6 @@ allDogs:[],
 temperaments:[],
 dogDetails:{},
 dark:false
-
 }
 
 export default function reducer(state = initialState, action) {
