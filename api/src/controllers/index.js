@@ -20,6 +20,15 @@ const getApiDogs = async () => {
           return dog.weight.metric
         }  
        }
+     
+       function validateTemperaments() {
+        if (dog.temperament!==undefined) {
+          return [dog.temperament].join().split(" ,").map((dog)=>dog.trim())
+        }else{
+          return ["Friendly"," Loyal"]
+        }
+       }
+       
 
         return {
             id:dog.id,
@@ -27,11 +36,13 @@ const getApiDogs = async () => {
             height:dog.height.metric,
             weight:validate(),
             yearsLife:dog.life_span,
-            temperaments:dog.temperament? [dog.temperament].join().split(" ,").map((dog)=>dog.trim()):["Friendly"," Loyal"],
+            temperaments:validateTemperaments(),
             image:dog.image.url
         }
     })
     return data
+
+
 };
 
 
