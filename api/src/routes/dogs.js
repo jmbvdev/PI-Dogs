@@ -11,12 +11,13 @@ const{getDogs}=require("../controllers/index")
 router.get("/", async (req, res) => {
   const name = req.query.name;
   let dogs = await getDogs(); 
+
  
   if (name) {
     let dogsPerName = dogs.filter((dog) =>
       dog.name.toLowerCase().includes(name.toLowerCase())
     );
-
+   
     if (dogsPerName.length < 1) {
       return res.status(404).send(`Can't find dog with name: ${name}`);
     }

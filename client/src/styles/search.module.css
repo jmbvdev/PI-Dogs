@@ -12,9 +12,7 @@
     bottom: 15px;
     padding: auto;
     color: #fff;
-    padding-left: 2rem;
-    
-    
+  
 }
 .search p{
     color: #fff;
@@ -28,11 +26,13 @@
 .search i{
     color: #fff;
    position:relative;
-   left: 1%;
+   width: min-content;
+   left: 85%;
    top: 3px;
    font-size: 15px;
-   padding-right: 10px;
-   padding-left: 5px;
+   cursor: pointer;
+   z-index: 2;
+   caret-color: transparent;
   
 
 }
@@ -61,16 +61,15 @@
     position: relative;
     top: 15px;
     caret-color: transparent;
-    
 }
 .dark_search i{
     color:#061b33;
    position:relative;
-   left: 1%;
+   left: 85%;
    top: 3px;
    font-size: 15px;
-   padding-right: 10px;
-   padding-left: 5px;
-  
-
+   cursor: pointer;
+   z-index: 2;
+   caret-color: transparent;
+   color: #fff;
 }
