@@ -20,6 +20,7 @@ const getApiDogs = async () => {
           return dog.weight.metric
         }  
        }
+
         return {
             id:dog.id,
             name:dog.name,
