@@ -7,7 +7,7 @@ import { filterByOrigin, filterByRaces, filterByTemperaments, getDogs, getTemper
 import s from "../styles/home.module.css"
 import icon from "../images/dogiIcon.png"
 import Loading from '../components/Loading';
-import Config from './Config';
+import Config from '../components/Config';
 const{temperamentsUnic,dogsUnic}=require("../utils/unics")
 
 const Home = () => {

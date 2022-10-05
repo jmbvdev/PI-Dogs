@@ -184,11 +184,8 @@ cursor: pointer;
 }
 .config button{
     position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 50px;
-
-   
+    bottom: 5%;
+    right: 2%;
     background-color: transparent;
     border: none;
    
@@ -275,10 +272,9 @@ cursor: pointer;
     }
     .dark_config button{
         position: fixed;
-        bottom: 0;
-        right: 0;
-        margin: 50px;
-        background-color: transparent;
+        bottom: 5%;
+        right: 2%;
+        background-color: transparent;  
         border: none;
        
     }

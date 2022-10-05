@@ -13,8 +13,10 @@ const DogDetails = () => {
  
     const dog=useSelector(state=>state.dogDetails)
     const dark= useSelector(state=>state.dark)
+
    useEffect(()=>{
        dispatch(getDogDetails(id))
+  
      
    },[id, dispatch])
 
@@ -24,10 +26,12 @@ const DogDetails = () => {
   }
   function handleClickBack() {
     history.push("/home");
+  
   }
 
     return (
         <div className={dark? s.dark_details:s.details}>
+        
             <div className={dark? s.dark_btn:s.btn}>
             <button onClick={handleClickBack}><i className="fa-solid fa-circle-chevron-left"></i></button>
 

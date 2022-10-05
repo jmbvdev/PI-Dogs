@@ -15,6 +15,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         dogs: action.payload,
         allDogs: action.payload,
+        dogDetails:{}
       };
     case GET_DOG_DETAILS:
       return {
