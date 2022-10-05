@@ -5,38 +5,19 @@ const {
 } = process.env;
 const axios= require("axios");
 const {Dog,Temperament} = require('../db.js');
+const{validateTemperaments,validateWeigth}=require("../utils/validators")
 
 const getApiDogs = async () => {
     const apiReq= await axios.get( `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
     const data= await apiReq.data.map(dog=>{
-      function validate(){
-        if(dog.weight.metric ==="NaN"){
-            return "10-50"
-        }else if(dog.weight.metric.includes("NaN")){
-          const cut=dog.weight.metric.split("-")
-          if (cut[0]==="NaN") return split[1]
-          if (cut[1]==="NaN") return split[0]  
-        }else{
-          return dog.weight.metric
-        }  
-       }
-     
-       function validateTemperaments() {
-        if (dog.temperament!==undefined) {
-          return [dog.temperament].join().split(" ,").map((dog)=>dog.trim())
-        }else{
-          return ["Friendly"," Loyal"]
-        }
-       }
        
-
         return {
             id:dog.id,
             name:dog.name,
             height:dog.height.metric,
-            weight:validate(),
+            weight:validateWeigth(dog),
             yearsLife:dog.life_span,
-            temperaments:validateTemperaments(),
+            temperaments:validateTemperaments(dog),
             image:dog.image.url
         }
     })

@@ -1,0 +1,21 @@
+function validateWeigth(dog){
+    if(dog.weight.metric ==="NaN"){
+        return "10-50"
+    }else if(dog.weight.metric.includes("NaN")){
+      const cut=dog.weight.metric.split("-")
+      if (cut[0]==="NaN") return split[1]
+      if (cut[1]==="NaN") return split[0]  
+    }else{
+      return dog.weight.metric
+    }  
+   }
+ 
+   function validateTemperaments(dog) {
+    if (dog.temperament!==undefined) {
+      return [dog.temperament].join().split(" ,").map((dog)=>dog.trim())
+    }else{
+      return ["Friendly"," Loyal"]
+    }
+   }
+
+   module.exports={validateTemperaments,validateWeigth}
