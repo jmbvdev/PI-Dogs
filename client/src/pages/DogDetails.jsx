@@ -2,7 +2,7 @@ import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import Loading from '../components/Loading';
-import { getDogDetails } from '../redux/actions';
+import {  getDogDetails } from '../redux/actions';
 import s from "../styles/dogDetails.module.css"
 
 
@@ -26,6 +26,7 @@ const DogDetails = () => {
   }
   function handleClickBack() {
     history.push("/home");
+
   
   }
 

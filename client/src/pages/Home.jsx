@@ -10,18 +10,21 @@ import {
   getDogs,
   getTemperaments,
   orderByAlphabet,
-  orderByWeight,
+  orderByWeight
 } from "../redux/actions";
 import s from "../styles/home.module.css";
 import icon from "../images/dogiIcon.png";
 import Loading from "../components/Loading";
 import Config from "../components/Config";
+
 const { temperamentsUnic, dogsUnic } = require("../utils/unics");
 
 const Home = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const dogs = useSelector((state) => state.dogs);
+  const allDogs = useSelector((state) => state.allDogs);
+  const isLoading = useSelector((state) => state.loading);
   const temperaments = useSelector((state) => state.temperaments);
   const dark = useSelector((state) => state.dark);
   const [alphabet, setAlphabet] = useState(true);
@@ -34,6 +37,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(getDogs());
     dispatch(getTemperaments());
+
   }, [dispatch]);
 
   //Handler Click----------------------------------------
@@ -42,6 +46,7 @@ const Home = () => {
   }
   function handleClickImage() {
     history.push("/");
+   
   }
   function handleConfig() {
     setConfig(!config);
@@ -81,7 +86,9 @@ const Home = () => {
   for (let i = 0; i < totalPages; i++) {
     pagesNumber.push(i);
   }
+
   //---------------------------------------------------------------
+
 
   return (
     <div className={dark ? s.dark_container : s.container}>
@@ -191,24 +198,36 @@ const Home = () => {
           </button>
         )}
       </div>
-
+   
+   
       <main className={s.cards}>
-        {dogs.length ? (
-          dogsPaginated?.map((dog) => (
-            <DogCard
-              key={dog.id}
-              id={dog.id}
-              name={dog.name}
-              weight={dog.weight}
-              height={dog.height}
-              yearsLife={dog.yearsLife}
-              image={dog.image}
-              temperaments={dog.temperaments}
-            />
-          ))
-        ) : (
-          <Loading />
-        )}
+        {
+          allDogs.length && typeof allDogs[0].id=="number" && !dogs.length? <h1>database empty</h1>:
+          <>
+        {isLoading && dogs.length? (
+
+dogsPaginated?.map((dog) => (
+  <DogCard
+    key={dog.id}
+    id={dog.id}
+    name={dog.name}
+    weight={dog.weight}
+    height={dog.height}
+    yearsLife={dog.yearsLife}
+    image={dog.image}
+    temperaments={dog.temperaments}
+  />
+))
+) : (
+  
+<Loading />
+)}
+        </>
+        }
+       
+     
+        
+       
       </main>
       {config ? (
         <Config

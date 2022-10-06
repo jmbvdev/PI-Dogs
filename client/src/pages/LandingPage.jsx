@@ -2,11 +2,16 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import s from "../styles/ladingPage.module.css";
 import dog from "../images/dogi.png";
+import { useDispatch } from "react-redux";
+import { changeLoading } from "../redux/actions";
+
 
 const LandingPage = () => {
+  const dispatch= useDispatch()
   const histoy = useHistory();
   function handleClick() {
     histoy.push("/home");
+   dispatch(changeLoading(false))
   }
   return (
     <div className={s.landing}>

@@ -11,6 +11,8 @@ export const FILTER_BY_ORIGIN="FILTER_BY_ORIGIN";
 export const ORDER_BY_ALPHABET="ORDER_BY_ALPHABET";
 export const ORDER_BY_WEIGHT="ORDER_BY_WEIGHT";
 export const DARK_MODE="DARK_MODE";
+export const IS_LOADING="IS_LOADING"
+
 
 //------http://localhost:3001
 
@@ -20,6 +22,8 @@ export function getDogs() {
     return axios
       .get(url + "/dogs")
       .then((res) => {
+
+       
         dispatch({
           type: GET_DOGS,
           payload: res.data,
@@ -42,6 +46,7 @@ export function getDogDetails(id) {
         });
       })
       .catch((err) => console.log(err));
+    
   };
 }
 
@@ -50,11 +55,13 @@ export function searchDogs(name) {
     return axios
       .get(url + `/dogs?name=${name}`)
       .then((res) => {
+        console.log(res.data)
         dispatch({
           type: SEARCH_DOGS,
           payload: res.data,
         });
       })
+    
       .catch((err) => console.log(err));
   };
 }
@@ -91,7 +98,7 @@ export function addDog({name,
             image,
             temperaments
         })
-        console.log(resp)
+       
         return resp
   }
 
@@ -151,4 +158,11 @@ export function filterByTemperaments(payload){
           
               })
               }
-            
+      export function changeLoading(payload) {
+        return {
+          type: IS_LOADING,
+          payload
+
+        }
+        
+      }
