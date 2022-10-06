@@ -16,6 +16,7 @@ import s from "../styles/home.module.css";
 import icon from "../images/dogiIcon.png";
 import Loading from "../components/Loading";
 import Config from "../components/Config";
+import EmptyDB from "../components/EmptyDB";
 
 const { temperamentsUnic, dogsUnic } = require("../utils/unics");
 
@@ -165,7 +166,12 @@ const Home = () => {
             className={dark ? s.dark_alpha : s.alpha}
             onClick={orderWeight}
           >
-            <i className="fa-solid fa-weight-hanging"></i>{weight?<i className="fa-solid fa-up-long"></i>:<i className="fa-solid fa-down-long"></i>}
+            <i className="fa-solid fa-weight-hanging"></i>
+            {weight ? (
+              <i className="fa-solid fa-up-long"></i>
+            ) : (
+              <i className="fa-solid fa-down-long"></i>
+            )}
           </button>
         </div>
       </header>
@@ -198,36 +204,30 @@ const Home = () => {
           </button>
         )}
       </div>
-   
-   
-      <main className={s.cards}>
-        {
-          allDogs.length && typeof allDogs[0].id=="number" && !dogs.length? <h1>database empty</h1>:
-          <>
-        {isLoading && dogs.length? (
 
-dogsPaginated?.map((dog) => (
-  <DogCard
-    key={dog.id}
-    id={dog.id}
-    name={dog.name}
-    weight={dog.weight}
-    height={dog.height}
-    yearsLife={dog.yearsLife}
-    image={dog.image}
-    temperaments={dog.temperaments}
-  />
-))
-) : (
-  
-<Loading />
-)}
-        </>
-        }
-       
-     
-        
-       
+      <main className={s.cards}>
+        {allDogs.length && typeof allDogs[0].id == "number" && !dogs.length ? (
+         <EmptyDB/>
+        ) : (
+          <>
+            {isLoading && dogs.length ? (
+              dogsPaginated?.map((dog) => (
+                <DogCard
+                  key={dog.id}
+                  id={dog.id}
+                  name={dog.name}
+                  weight={dog.weight}
+                  height={dog.height}
+                  yearsLife={dog.yearsLife}
+                  image={dog.image}
+                  temperaments={dog.temperaments}
+                />
+              ))
+            ) : (
+              <Loading />
+            )}
+          </>
+        )}
       </main>
       {config ? (
         <Config
