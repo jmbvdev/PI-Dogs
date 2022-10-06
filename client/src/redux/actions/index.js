@@ -55,7 +55,6 @@ export function searchDogs(name) {
     return axios
       .get(url + `/dogs?name=${name}`)
       .then((res) => {
-        console.log(res.data)
         dispatch({
           type: SEARCH_DOGS,
           payload: res.data,
