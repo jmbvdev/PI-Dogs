@@ -1,8 +1,8 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import Loading from '../components/Loading';
-import {  getDogDetails } from '../redux/actions';
+import {  deleteDog, getDogDetails } from '../redux/actions';
 import s from "../styles/dogDetails.module.css"
 
 
@@ -10,6 +10,7 @@ const DogDetails = () => {
     const {id}=useParams()
     const dispatch=useDispatch()
     const history= useHistory()
+    const [isRemoved, setIsRemoved]= useState(false)
  
     const dog=useSelector(state=>state.dogDetails)
     const dark= useSelector(state=>state.dark)
@@ -26,8 +27,11 @@ const DogDetails = () => {
   }
   function handleClickBack() {
     history.push("/home");
-
-  
+  }
+  function handleDelete() {
+    dispatch(deleteDog(id))
+    setIsRemoved(true)
+   
   }
 
     return (
@@ -63,8 +67,21 @@ const DogDetails = () => {
                 </p>
                 <button onClick={handleClickCreate}>
                   <i className="fa-solid fa-plus"></i> Create a dog
+                 
                 </button>
               </div>
+                {
+                  id.length>3&&
+                <button onClick={handleDelete} className={s.delete_btn}>
+                  <i className="fa-solid fa-trash-can"></i>
+                </button>
+                }
+                {
+                  isRemoved&&
+                <div className={s.deleted}>
+                  <p>The dog was removed from the database</p>
+                </div>
+                }
             </div>
           </div>
         ) : (

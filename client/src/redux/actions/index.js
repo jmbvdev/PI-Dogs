@@ -12,7 +12,7 @@ export const ORDER_BY_ALPHABET="ORDER_BY_ALPHABET";
 export const ORDER_BY_WEIGHT="ORDER_BY_WEIGHT";
 export const DARK_MODE="DARK_MODE";
 export const IS_LOADING="IS_LOADING"
-
+export const DELETE_DOG="DELETE_DOG"
 
 //------http://localhost:3001
 
@@ -22,8 +22,6 @@ export function getDogs() {
     return axios
       .get(url + "/dogs")
       .then((res) => {
-
-       
         dispatch({
           type: GET_DOGS,
           payload: res.data,
@@ -49,7 +47,7 @@ export function getDogDetails(id) {
     
   };
 }
-
+//----------Search Dogs------------
 export function searchDogs(name) {
   return async function (dispatch) {
     return axios
@@ -60,11 +58,10 @@ export function searchDogs(name) {
           payload: res.data,
         });
       })
-    
       .catch((err) => console.log(err));
   };
 }
-
+//----------Get Temperaments------------
 export function getTemperaments() {
   return async function (dispatch) {
     return axios
@@ -78,7 +75,7 @@ export function getTemperaments() {
       .catch((err) => console.log(err));
   };
 }
-
+//----------Add Dog------------
 export function addDog({name,
     minHeight,
     maxHeight,
@@ -102,10 +99,7 @@ export function addDog({name,
   }
 
 }
-
-
-
-// filters
+//----------Filter by Temperaments------------
 export function filterByTemperaments(payload){
         
     return  ({
@@ -114,6 +108,7 @@ export function filterByTemperaments(payload){
 
     })
     }
+//----------Filter by Races------------
     export function filterByRaces(payload){
         
       return  ({
@@ -122,7 +117,7 @@ export function filterByTemperaments(payload){
   
       })
       }
-
+//----------Order by origin------------
       export function filterByOrigin(payload){
         
         return  ({
@@ -132,7 +127,7 @@ export function filterByTemperaments(payload){
         })
         }
         
-
+//----------Order by ALPHABET------------
         export function orderByAlphabet(payload){
         
           return  ({
@@ -141,6 +136,7 @@ export function filterByTemperaments(payload){
       
           })
           }
+//----------Order by Weight------------
           export function orderByWeight(payload){
         
             return  ({
@@ -149,6 +145,7 @@ export function filterByTemperaments(payload){
         
             })
             }
+//----------Dark Mode------------
             export function isDark(payload){
         
               return  ({
@@ -157,6 +154,8 @@ export function filterByTemperaments(payload){
           
               })
               }
+
+//----------Loading------------
       export function changeLoading(payload) {
         return {
           type: IS_LOADING,
@@ -165,3 +164,18 @@ export function filterByTemperaments(payload){
         }
         
       }
+
+      export function deleteDog(id){
+        return async function (dispatch) {
+          return axios
+            .delete(url + `/dogs/${id}`)
+            .then((res) => {
+              dispatch({
+                type: DELETE_DOG,
+                payload: res.data,
+              });
+            })
+            .catch((err) => console.log(err));
+    
+          }
+        }

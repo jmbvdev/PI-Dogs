@@ -12,8 +12,10 @@ router.get("/", async (req, res) => {
   const name = req.query.name;
   let dogs = await getDogs(); 
 
- 
+  try {
+    
   if (name) {
+     
     let dogsPerName = dogs.filter((dog) =>
       dog.name.toLowerCase().includes(name.toLowerCase())
     );
@@ -25,6 +27,11 @@ router.get("/", async (req, res) => {
   } else {
     res.status(200).json(dogs);
   }
+    
+  } catch (error) {
+    console.log(error)
+  }
+ 
 });
    // --------get("/dogs/:id")------------------
    router.get('/:id', async (req,res)=>{
@@ -65,6 +72,23 @@ router.post("/", async(req,res)=>{
         console.log(error)
     }
 })
+
+// --------post("/dogs")------------------
+router.delete("/:id", async(req,res)=>{
+  const id=req.params.id
+  try {
+    await Dog.destroy({
+      where:{
+        id
+      }
+    })
+    res.send(`the dog with id ${id} was successfully removed`)
+    
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 
 
 

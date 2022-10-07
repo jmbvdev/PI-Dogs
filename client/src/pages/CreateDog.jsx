@@ -263,14 +263,15 @@ const CreateDog = () => {
           </div>
           {errors.select && <p className={s.errors}>{errors.select}</p>}
           {(
-            dog.name!=="" &&
-            dog.minHeight!==""&&
-            dog.maxHeight!=="" &&
-            dog.minWeight!=="" &&
-            dog.maxWeight!=="" &&
-            dog.maxLife!=="" &&
-            dog.minLife!=="" &&
-            dog.image!==""&&
+            dog.name.length>0&&
+            !errors.name&&
+            !errors.minHeigh&&
+            !errors.maxHeight&&
+            !errors.minWeight&&
+            !errors.maxWeight&&
+            !errors.maxLife&&
+            !errors.minLife&&
+            !errors.image&&
             dog.temperaments.length>0
           ) ? <button className={s.submit} type="submit" name="submit" onClick={(e) => handleSubmit(e)}>
           submit

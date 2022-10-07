@@ -1,4 +1,4 @@
-import { IS_LOADING,GET_DOGS,GET_DOG_DETAILS,SEARCH_DOGS,GET_TEMPERAMENTS,ADD_DOG, FILTER_BY_TEMPERAMENTS, FILTER_BY_RACES, FILTER_BY_ORIGIN,ORDER_BY_ALPHABET,ORDER_BY_WEIGHT, DARK_MODE } from "../actions"
+import { DELETE_DOG,IS_LOADING,GET_DOGS,GET_DOG_DETAILS,SEARCH_DOGS,GET_TEMPERAMENTS,ADD_DOG, FILTER_BY_TEMPERAMENTS, FILTER_BY_RACES, FILTER_BY_ORIGIN,ORDER_BY_ALPHABET,ORDER_BY_WEIGHT, DARK_MODE } from "../actions"
 const initialState={
 dogs:[],
 allDogs:[],
@@ -53,7 +53,6 @@ export default function reducer(state = initialState, action) {
                 ? e.temperaments.map((e) => e.name).includes(action.payload)
                 : e.temperaments[0].includes(action.payload)
             );
-
       return {
         ...state,
         dogs: temperament,
@@ -81,8 +80,6 @@ export default function reducer(state = initialState, action) {
         dogs:origins
       };
       case ORDER_BY_ALPHABET:
-       
-       
         return {
           ...state,
           dogs: action.payload===true? state.dogs?.sort((a, b) => a.name.localeCompare(b.name))
@@ -90,8 +87,6 @@ export default function reducer(state = initialState, action) {
           
         };
         case ORDER_BY_WEIGHT:
-      
-          
           return {
             ...state,
             dogs:
@@ -106,16 +101,17 @@ export default function reducer(state = initialState, action) {
             if (parseInt(a.weight) <parseInt(b.weight)) return -1;
             return 0;
         })
-            
           };
           case IS_LOADING:
-       
-       
             return {
               ...state,
               loading:action.payload
             };
-
+            case DELETE_DOG:
+              return{
+                ...state,
+                dogs:state.dogs
+              }
     default:
       return {
         ...state,

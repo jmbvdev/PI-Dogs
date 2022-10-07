@@ -47,7 +47,6 @@ const Home = () => {
   }
   function handleClickImage() {
     history.push("/");
-   
   }
   function handleConfig() {
     setConfig(!config);
