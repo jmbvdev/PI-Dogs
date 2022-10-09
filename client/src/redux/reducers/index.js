@@ -1,11 +1,12 @@
-import { DELETE_DOG,IS_LOADING,GET_DOGS,GET_DOG_DETAILS,SEARCH_DOGS,GET_TEMPERAMENTS,ADD_DOG, FILTER_BY_TEMPERAMENTS, FILTER_BY_RACES, FILTER_BY_ORIGIN,ORDER_BY_ALPHABET,ORDER_BY_WEIGHT, DARK_MODE } from "../actions"
+import { DELETE_DOG,IS_LOADING,GET_DOGS,GET_DOG_DETAILS,SEARCH_DOGS,GET_TEMPERAMENTS,ADD_DOG, FILTER_BY_TEMPERAMENTS, FILTER_BY_RACES, FILTER_BY_ORIGIN,ORDER_BY_ALPHABET,ORDER_BY_WEIGHT, DARK_MODE, IS_BUFFERING } from "../actions"
 const initialState={
 dogs:[],
 allDogs:[],
 temperaments:[],
 dogDetails:{},
 dark:false,
-loading:false
+loading:false,
+buffering:false
 }
 
 export default function reducer(state = initialState, action) {
@@ -28,6 +29,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         dogs: action.payload,
+        buffering: !state.buffering
       };
     case GET_TEMPERAMENTS:
       return {
@@ -108,6 +110,11 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 dogs:state.dogs
               };
+              case IS_BUFFERING:
+            return {
+              ...state,
+              buffering:action.payload
+            };
             
     default:
       return {

@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
   }
     
   } catch (error) {
-    console.log(error)
+    res.json(404).send(`Can't find dogs`)
   }
  
 });

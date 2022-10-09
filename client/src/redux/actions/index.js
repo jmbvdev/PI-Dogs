@@ -13,6 +13,7 @@ export const ORDER_BY_WEIGHT="ORDER_BY_WEIGHT";
 export const DARK_MODE="DARK_MODE";
 export const IS_LOADING="IS_LOADING"
 export const DELETE_DOG="DELETE_DOG"
+export const IS_BUFFERING="IS_BUFFERING"
 
 
 //------http://localhost:3001
@@ -178,6 +179,13 @@ export function filterByTemperaments(payload){
             })
             .catch((err) => console.log(err));
     
+          }
+        }
+
+        export function isBuffering(payload){
+          return{
+            type:IS_BUFFERING,
+            payload
           }
         }
 

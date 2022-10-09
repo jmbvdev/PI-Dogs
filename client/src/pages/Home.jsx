@@ -33,6 +33,7 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [config, setConfig] = useState(false);
   const [dogsPerPage, setDogsPerPage] = useState(8);
+  const buffering = useSelector((state) => state.buffering);
 
 
   useEffect(() => {
@@ -102,7 +103,11 @@ const Home = () => {
           />
           <div className={s.search}>
             <h1>PuppypediA</h1>
-            <SearchDogs dark={dark} />
+            <SearchDogs dark={dark} buffering={buffering}/>
+            {
+              buffering&&
+            <img src="https://media.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" alt="" />
+            }
           </div>
           <button
             className={dark ? s.dark_create : s.create}
