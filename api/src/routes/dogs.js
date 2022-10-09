@@ -73,7 +73,7 @@ router.post("/", async(req,res)=>{
     }
 })
 
-// --------post("/dogs")------------------
+// --------delete("/dogs/:id")------------------
 router.delete("/:id", async(req,res)=>{
   const id=req.params.id
   try {
@@ -83,6 +83,26 @@ router.delete("/:id", async(req,res)=>{
       }
     })
     res.send(`the dog with id ${id} was successfully removed`)
+    
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+// --------update("/dogs/:id")------------------
+router.patch("/:id", async(req,res)=>{
+  const id=req.params.id
+  const { name, height, weight, image,yearsLife, temperaments } = req.body;
+    if (!name && !height && !weight && !image) {
+        res.status(404).send("Missing some required values")
+    }
+  try {
+    await Dog.update({name, height, weight, image,yearsLife, temperaments},{
+      where:{
+        id
+      }
+    })
+    res.send(`the dog with id ${id} was successfully updated`)
     
   } catch (error) {
     console.log(error)

@@ -11,6 +11,7 @@ const DogDetails = () => {
     const dispatch=useDispatch()
     const history= useHistory()
     const [isRemoved, setIsRemoved]= useState(false)
+   
  
     const dog=useSelector(state=>state.dogDetails)
     const dark= useSelector(state=>state.dark)
@@ -33,6 +34,7 @@ const DogDetails = () => {
     setIsRemoved(true)
    
   }
+ console.log(dog)
 
     return (
       <div className={dark ? s.dark_details : s.details}>
@@ -49,9 +51,7 @@ const DogDetails = () => {
               <div className={dark ? s.dark_specs : s.specs}>
                 <p>
                   <strong>Temperament: </strong>
-                  {id.length > 3
-                    ? dog?.temperaments?.map((t) => t.name + ", ")
-                    : `${dog?.temperaments?.[0]}`}
+                  {dog?.temperaments}
                 </p>
                 <p>
                   <strong>Height: </strong>
@@ -82,6 +82,7 @@ const DogDetails = () => {
                   <p>The dog was removed from the database</p>
                 </div>
                 }
+               
             </div>
           </div>
         ) : (

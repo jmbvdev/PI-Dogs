@@ -18,10 +18,8 @@ const DogCard = ({ name, id, weight, image, temperaments }) => {
           {weight}
         </p>
         <p className={s.temperaments}>
-          <strong>Temperament:</strong>{" "}
-          {id.length > 3
-            ? temperaments?.map((t) => t.name + ", ")
-            : `${temperaments}`}
+          <strong>Temperament:</strong>
+          {temperaments}
         </p>
       </div>
     </div>

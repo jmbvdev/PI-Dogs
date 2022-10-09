@@ -14,6 +14,7 @@ export const DARK_MODE="DARK_MODE";
 export const IS_LOADING="IS_LOADING"
 export const DELETE_DOG="DELETE_DOG"
 
+
 //------http://localhost:3001
 
 //Get all dogs------------
@@ -179,3 +180,5 @@ export function filterByTemperaments(payload){
     
           }
         }
+
+   

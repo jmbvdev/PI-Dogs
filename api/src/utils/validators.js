@@ -5,16 +5,17 @@ function validateWeigth(dog){
       const cut=dog.weight.metric.split("-")
       if (cut[0]==="NaN") return split[1]
       if (cut[1]==="NaN") return split[0]  
-    }else{
+    }
+    else{
       return dog.weight.metric
     }  
    }
  
    function validateTemperaments(dog) {
     if (dog.temperament!==undefined) {
-      return [dog.temperament].join().split(" ,").map((dog)=>dog.trim())
+      return dog.temperament
     }else{
-      return ["Friendly"," Loyal"]
+      return "Loyal, Independent, Intelligent, Brave"
     }
    }
 

@@ -28,7 +28,7 @@ const getApiDogs = async () => {
 
 
   const getDbDogs=async()=>{
-    return await Dog.findAll({
+    const apiDog= await Dog.findAll({
       attributes: {
         exclude: ['createdAt', 'updatedAt']
     },
@@ -38,6 +38,19 @@ const getApiDogs = async () => {
         through: {attributes: []}
        } 
       });
+      const res=await apiDog.map(dog=>{
+        return{
+          id:dog.id,
+            name:dog.name,
+            height:dog.height,
+            weight:dog.weight,
+            yearsLife:dog.yearsLife,
+            temperaments:dog.temperaments? dog.temperaments.map(e=>e.name).join(", "):"",
+            image:dog.image
+        }
+      })
+    
+      return res
   }
 
 const getDogs=async()=>{
