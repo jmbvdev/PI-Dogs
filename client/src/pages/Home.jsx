@@ -106,7 +106,7 @@ const Home = () => {
             <SearchDogs dark={dark} buffering={buffering}/>
             {
               buffering&&
-            <img src="https://media.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" alt="" />
+            <img className={s.buffer} src="https://thumbs.gfycat.com/ImpressiveGenuineHen-max-1mb.gif" alt="buffer" />
             }
           </div>
           <button

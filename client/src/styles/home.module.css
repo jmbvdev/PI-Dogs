@@ -189,7 +189,13 @@
 .dark_mode {
   background-color: #061b33;
 }
+.buffer{
+  display: block;
+  position: relative;
+  top: 20px;
 
+  
+}
 /*--------- Dark mode----------------------- */
 .dark_container {
   width: 100%;
