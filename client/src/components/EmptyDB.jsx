@@ -11,8 +11,8 @@ const EmptyDB = ({dogs, allDogs}) => {
                 <h2>{dogs&&dogs.message}</h2>:
                 typeof allDogs[0].id!=="number"?
 
-            <h1>Can't find dogs in database</h1>:
-            <h1>Database empty</h1>
+            <h2>Can't find dog with that temperament</h2>:
+            <h2>Database empty</h2>
         
             }   
         </div>

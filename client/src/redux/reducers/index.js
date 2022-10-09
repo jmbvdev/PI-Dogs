@@ -66,13 +66,13 @@ export default function reducer(state = initialState, action) {
         dogs:races
       };
       case FILTER_BY_ORIGIN:
-      const filterOrigin= state.allDogs;
       const origins =
         action.payload === "all"
-          ? filterOrigin
-          : state.dogs.filter((e) => 
-          action.payload==="db"?e.id.length>3:typeof e.id=="number"
-          )
+          ? state.allDogs
+          :action.payload==="db"? state.dogs.filter((e) => 
+         e.id.length>3): state.allDogs.filter((e) => 
+         typeof e.id=="number")
+          
       return {
         ...state,
         dogs:origins
