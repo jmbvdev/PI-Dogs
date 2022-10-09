@@ -45,7 +45,7 @@ const getApiDogs = async () => {
             height:dog.height,
             weight:dog.weight,
             yearsLife:dog.yearsLife,
-            temperaments:dog.temperaments? dog.temperaments.map(e=>e.name).join(", "):"",
+            temperaments:dog.temperaments? dog.temperaments.map(e=>e.name).join(", "):"Loyal, Independent, Intelligent, Brave",
             image:dog.image
         }
       })
