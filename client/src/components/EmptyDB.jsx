@@ -1,9 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import s from "../styles/emptyDB.module.css"
 
 const EmptyDB = ({dogs, allDogs}) => {
+    const dark = useSelector((state) => state.dark);
     return (
-        <div className={s.empty}>
+        <div className={dark? s.dark_empty:s.empty}>
             
            
             {
