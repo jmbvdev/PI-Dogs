@@ -34,7 +34,7 @@ const DogDetails = () => {
     setIsRemoved(true)
    
   }
- console.log(dog)
+
 
     return (
       <div className={dark ? s.dark_details : s.details}>
@@ -51,7 +51,7 @@ const DogDetails = () => {
               <div className={dark ? s.dark_specs : s.specs}>
                 <p>
                   <strong>Temperament: </strong>
-                  {dog?.temperaments}
+                  {dog?.temperaments}.
                 </p>
                 <p>
                   <strong>Height: </strong>
@@ -59,7 +59,7 @@ const DogDetails = () => {
                 </p>
                 <p>
                   <strong>Weight: </strong>
-                  {dog.weight}
+                  {dog.weight? dog.weight:"10-50"}
                 </p>
                 <p>
                   <strong>Life Span: </strong>

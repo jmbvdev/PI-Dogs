@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
     );
    
     if (dogsPerName.length < 1) {
-      return res.status(404).send(`Can't find dog with name: ${name}`);
+      return res.json({message:`Can't find dog with name: ${name}`});
     }
     res.status(200).json(dogsPerName);
   } else {

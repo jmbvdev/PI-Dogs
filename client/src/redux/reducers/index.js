@@ -68,7 +68,7 @@ export default function reducer(state = initialState, action) {
       const origins =
         action.payload === "all"
           ? filterOrigin
-          : state.allDogs.filter((e) => 
+          : state.dogs.filter((e) => 
           action.payload==="db"?e.id.length>3:typeof e.id=="number"
           )
       return {

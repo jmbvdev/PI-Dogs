@@ -80,7 +80,7 @@ const Home = () => {
 
   const lastIndex = page * dogsPerPage; // 1*8 //8
   const firstIndex = lastIndex - dogsPerPage; //0
-  const dogsPaginated = dogs.slice(firstIndex, lastIndex);
+ const dogsPaginated = dogs.length? dogs.slice(firstIndex, lastIndex):dogs;
   const totalPages = Math.ceil(dogs.length / dogsPerPage);
   let pagesNumber = [];
   for (let i = 0; i < totalPages; i++) {
@@ -205,8 +205,8 @@ const Home = () => {
       </div>
 
       <main className={s.cards}>
-        {allDogs.length && typeof allDogs[0].id == "number" && !dogs.length ? (
-         <EmptyDB/>
+        {allDogs.length && !dogs.length ? (
+         <EmptyDB dogs={dogs} allDogs={allDogs}/>
         ) : (
           <>
             {isLoading && dogs.length ? (

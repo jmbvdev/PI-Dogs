@@ -15,11 +15,11 @@ const DogCard = ({ name, id, weight, image, temperaments }) => {
         <strong>{name}</strong>
         <p className={s.weight}>
           <strong>Weight: </strong>
-          {weight}
+          {weight?weight:"10-50"}
         </p>
         <p className={s.temperaments}>
-          <strong>Temperament:</strong>
-          {temperaments}
+          <strong>Temperament: </strong>
+          {temperaments}.
         </p>
       </div>
     </div>
