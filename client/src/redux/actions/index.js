@@ -166,7 +166,7 @@ export function filterByTemperaments(payload){
         }
         
       }
-
+//----------Delete Dog------------
       export function deleteDog(id){
         return async function (dispatch) {
           return axios
@@ -181,7 +181,7 @@ export function filterByTemperaments(payload){
     
           }
         }
-
+//----------Buffering------------
         export function isBuffering(payload){
           return{
             type:IS_BUFFERING,
