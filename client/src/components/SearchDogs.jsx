@@ -4,11 +4,9 @@ import {useDispatch} from "react-redux"
 import{isBuffering, searchDogs}from "../redux/actions/index"
 import s from "../styles/search.module.css"
 
-const SearchDogs = ({dark, buffering}) => {
+const SearchDogs = ({dark}) => {
      const dispatch= useDispatch()
      const[search, setSearch]= useState("")
-
-    
 
      function handleChange(e){
         e.preventDefault()
@@ -18,8 +16,6 @@ const SearchDogs = ({dark, buffering}) => {
         e.preventDefault()
         dispatch(searchDogs(search))
         dispatch(isBuffering(true))
-      
-        
     }
 
     return (
@@ -29,8 +25,6 @@ const SearchDogs = ({dark, buffering}) => {
                 <input type="text" 
                 onChange={(e)=>handleChange(e)}
                 />
-
-               
         </div>
     );
 };

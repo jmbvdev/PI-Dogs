@@ -17,7 +17,6 @@ import icon from "../images/dogiIcon.png";
 import Loading from "../components/Loading";
 import Config from "../components/Config";
 import EmptyDB from "../components/EmptyDB";
-
 const { temperamentsUnic, dogsUnic } = require("../utils/unics");
 
 const Home = () => {

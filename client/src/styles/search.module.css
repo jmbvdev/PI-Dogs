@@ -12,6 +12,7 @@
     bottom: 15px;
     padding: auto;
     color: #fff;
+
   
 }
 .search p{
@@ -40,6 +41,7 @@
 .dark_search{
     display: flex;
     flex-direction: column;
+ 
 
 }
 .dark_search input{

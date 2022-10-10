@@ -1,8 +1,6 @@
 import React from "react";
-
 import { useDispatch } from "react-redux";
 import { isDark } from "../redux/actions";
-
 import s from "../styles/config.module.css";
 
 const Config = ({ setConfig, setDogsPerPage, dark }) => {

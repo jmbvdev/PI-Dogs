@@ -4,9 +4,6 @@ const {Dog,Temperament} = require('../db.js');
 const{getDogs}=require("../controllers/index")
 
 
-// GET https://api.thedogapi.com/v1/breeds
-// GET https://api.thedogapi.com/v1/breeds/search?q={raza_perro}
-
  // --------get("/dogs")------------------
 router.get("/", async (req, res) => {
   const name = req.query.name;

@@ -7,6 +7,8 @@ const axios= require("axios");
 const {Dog,Temperament} = require('../db.js');
 const{validateTemperaments,validateWeigth}=require("../utils/validators")
 
+//---------Get Api Dogs---------------------
+
 const getApiDogs = async () => {
     const apiReq= await axios.get( `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)
     const data= await apiReq.data.map(dog=>{
@@ -22,11 +24,9 @@ const getApiDogs = async () => {
         }
     })
     return data
-
-
 };
 
-
+//---------Get DATABASE Dogs---------------------
   const getDbDogs=async()=>{
     const apiDog= await Dog.findAll({
       attributes: {
@@ -40,7 +40,7 @@ const getApiDogs = async () => {
       });
       const res=await apiDog.map(dog=>{
         return{
-          id:dog.id,
+            id:dog.id,
             name:dog.name,
             height:dog.height,
             weight:dog.weight,
@@ -49,16 +49,18 @@ const getApiDogs = async () => {
             image:dog.image
         }
       })
-    
       return res
   }
 
+  //---------Get Api and DATABASE dogs---------------------
 const getDogs=async()=>{
     const api=await getApiDogs()
     const dtb=await getDbDogs()
-    let data=[...dtb,...api]
+    let data=dtb.concat(api)
     return data
 }
+
+
 
 module.exports={
     getApiDogs,getDbDogs,getDogs

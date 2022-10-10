@@ -154,6 +154,7 @@
 .bone img {
   margin: 30px;
   width: 140px;
+
 }
 .bone span {
   font-family: "Outfit", sans-serif;
@@ -190,7 +191,6 @@
   background-color: #061b33;
 }
 .buffer{
-  display: block;
   position: relative;
   top: 20px;
 

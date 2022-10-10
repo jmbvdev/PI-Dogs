@@ -4,9 +4,9 @@ import { useHistory } from 'react-router-dom';
 import Alert from '../components/Alert';
 import AlertTemperament from '../components/AlertTemperament';
 import { addDog, changeLoading, getTemperaments } from '../redux/actions';
-import s from "../styles/createDog.module.css"
-const{validate}=require("../utils/validator")
-const{temperamentsUnic}=require("../utils/unics")
+import s from "../styles/createDog.module.css";
+const{validate}=require("../utils/validator");
+const{temperamentsUnic}=require("../utils/unics");
 
 
 const CreateDog = () => {

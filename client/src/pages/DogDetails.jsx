@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import Loading from '../components/Loading';
 import {  deleteDog, getDogDetails } from '../redux/actions';
-import s from "../styles/dogDetails.module.css"
+import s from "../styles/dogDetails.module.css";
 
 
 const DogDetails = () => {
@@ -11,15 +11,11 @@ const DogDetails = () => {
     const dispatch=useDispatch()
     const history= useHistory()
     const [isRemoved, setIsRemoved]= useState(false)
-   
- 
     const dog=useSelector(state=>state.dogDetails)
     const dark= useSelector(state=>state.dark)
 
    useEffect(()=>{
-       dispatch(getDogDetails(id))
-  
-     
+       dispatch(getDogDetails(id))     
    },[id, dispatch])
 
  //--------handler click--------------------
@@ -32,7 +28,6 @@ const DogDetails = () => {
   function handleDelete() {
     dispatch(deleteDog(id))
     setIsRemoved(true)
-   
   }
 
 
