@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import s from "../styles/dogCard.module.css";
 
@@ -7,9 +8,9 @@ const DogCard = ({ name, id, weight, image, temperaments }) => {
   function handleClickCard() {
     history.push(`/details/${id}`);
   }
-
+  const dark = useSelector((state) => state.dark);
   return (
-    <div onClick={handleClickCard} className={s.card}>
+    <div onClick={handleClickCard} className={dark?s.dark_card:s.card}>
       <img className={s.image} src={image} alt="" />
       <div className={s.text}>
         <strong>{name}</strong>

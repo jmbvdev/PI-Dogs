@@ -77,10 +77,10 @@ const Home = () => {
     setPage(1);
   }
 
-  //Pagination--------------------------------------------
+  //-------------Pagination--------------------------------------------
 
-  const lastIndex = page * dogsPerPage; // 1*8 //8
-  const firstIndex = lastIndex - dogsPerPage; //0
+  const lastIndex = page * dogsPerPage; 
+  const firstIndex = lastIndex - dogsPerPage; 
  const dogsPaginated = dogs.length? dogs.slice(firstIndex, lastIndex):dogs;
   const totalPages = Math.ceil(dogs.length / dogsPerPage);
   let pagesNumber = [];

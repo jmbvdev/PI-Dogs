@@ -32,13 +32,19 @@
     color: #d3e7ff;
     font-family: 'DM Serif Text', serif;
     font-weight: 400;
+    position: relative;
+    margin-top: 10px;
+
+    display: inline;
 }
 
 .specs {
-    background-color: #103d74;
+    
     border-radius: 10px;
     color: #fff;
     font-family: "Outfit", sans-serif;
+    position: relative;
+
 }
 
 .specs p {
@@ -194,6 +200,7 @@
     color: #103d74;
     font-family: 'DM Serif Text', serif;
     font-weight: 400;
+
 }
 
 
@@ -232,7 +239,7 @@
 
 @media only screen and (max-width: 800px) {
     .details {
-        padding-top: 5rem;
+        padding-top: 2rem;
     }
 
     .container {
@@ -260,9 +267,14 @@
 
     .text h1 {
         padding-left: 20px;
+       position: relative;
+       top: 10px;
+       margin: 10px;
+    
+
     }
     .dark_details {
-        padding-top: 5rem;
+        padding-top: 3rem;
     }
 
     .dark_container {
