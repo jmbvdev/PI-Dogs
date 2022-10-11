@@ -15,7 +15,6 @@ export const IS_LOADING = "IS_LOADING";
 export const DELETE_DOG = "DELETE_DOG";
 export const IS_BUFFERING = "IS_BUFFERING";
 
-//------http://localhost:3001
 
 //Get all dogs------------
 export function getDogs() {
@@ -172,3 +171,5 @@ export function isBuffering(payload) {
     payload,
   };
 }
+
+

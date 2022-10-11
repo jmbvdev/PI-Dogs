@@ -119,7 +119,6 @@ const Home = () => {
           <div className={dark ? s.dark_select : s.select}>
             <select
               name="filterBytemperament"
-              defaultValue={"default"}
               onChange={(e) => filterTemperaments(e)}
             >
               <option value="all">Temperaments</option>
@@ -133,7 +132,6 @@ const Home = () => {
           <div className={dark ? s.dark_select : s.select}>
             <select
               name="filterByRace"
-              defaultValue={"default"}
               onChange={(e) => filterRaces(e)}
             >
               <option value="all">Breeds</option>
@@ -147,7 +145,6 @@ const Home = () => {
           <div className={dark ? s.dark_select : s.select}>
             <select
               name="filterByOrigin"
-              defaultValue={"default"}
               onChange={(e) => filterOrigin(e)}
             >
               <option value="all">DB-API</option>
@@ -160,9 +157,9 @@ const Home = () => {
             onClick={orderAlphabetical}
           >
             {alphabet ? (
-              <i className="fa-solid fa-arrow-up-a-z"></i>
-            ) : (
               <i className="fa-solid fa-arrow-down-z-a"></i>
+            ) : (
+              <i className="fa-solid fa-arrow-up-a-z"></i>
             )}
           </button>
           <button
@@ -171,9 +168,9 @@ const Home = () => {
           >
             <i className="fa-solid fa-weight-hanging"></i>
             {weight ? (
-              <i className="fa-solid fa-up-long"></i>
+               <i className="fa-solid fa-down-long"></i>
             ) : (
-              <i className="fa-solid fa-down-long"></i>
+              <i className="fa-solid fa-up-long"></i>
             )}
           </button>
         </div>
@@ -188,7 +185,7 @@ const Home = () => {
           </button>
         )}
         {pagesNumber.map((n) =>
-          n > 0 ? (
+          n > 0 && (
             <button
               className={dark ? s.dark_page_number : s.page_number}
               onClick={() => setPage(n)}
@@ -196,7 +193,7 @@ const Home = () => {
             >
               {n}
             </button>
-          ) : null
+          ) 
         )}
         {page !== totalPages && (
           <button

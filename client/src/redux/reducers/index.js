@@ -13,6 +13,7 @@ import {
   ORDER_BY_WEIGHT,
   DARK_MODE,
   IS_BUFFERING,
+
 } from "../actions";
 const initialState = {
   dogs: [],
@@ -99,16 +100,16 @@ export default function reducer(state = initialState, action) {
         ...state,
         dogs:
           action.payload === true
-            ? state.dogs?.sort((a, b) => a.name.localeCompare(b.name))
-            : state.dogs?.sort((a, b) => b.name.localeCompare(a.name)),
+            ? state.dogs?.sort((a, b) => b.name.localeCompare(a.name))
+            : state.dogs?.sort((a, b) => a.name.localeCompare(b.name)),
       };
     case ORDER_BY_WEIGHT:
       return {
         ...state,
         dogs:
           action.payload === true
-            ? state.dogs.sort((a, b) =>parseInt(b.weight)-parseInt(a.weight))
-            : state.dogs.sort((a, b) => parseInt(a.weight)-parseInt(b.weight)),
+            ? state.dogs.sort((a, b) =>parseInt(a.weight)-parseInt(b.weight))
+            : state.dogs.sort((a, b) => parseInt(b.weight)-parseInt(a.weight)),
       };
     case IS_LOADING:
       return {
@@ -125,7 +126,6 @@ export default function reducer(state = initialState, action) {
         ...state,
         buffering: action.payload,
       };
-
     default:
       return {
         ...state,
