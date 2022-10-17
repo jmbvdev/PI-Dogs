@@ -38,7 +38,7 @@ router.get("/", async (req, res) => {
      let dog= dogs.find(d=>d.id==id)
   
     try {
-        if (!dog)return res.status(404).send(`Can't find dog with id:${id}`)
+        if (!dog)return res.json({message:`Can't find dog with id:${id}`})
         res.json(dog)
     
     } catch (error) {

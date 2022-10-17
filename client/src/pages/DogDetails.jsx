@@ -38,7 +38,10 @@ const DogDetails = () => {
             <i className="fa-solid fa-circle-chevron-left"></i>
           </button>
         </div>
-        {dog.image ? (
+        {
+          dog.message? <h2>{dog.message}</h2>:
+          <>
+            {dog.image ? (
           <div className={dark ? s.dark_container : s.container}>
             <img src={dog.image} alt="" />
             <div className={dark ? s.dark_text : s.text}>
@@ -83,6 +86,9 @@ const DogDetails = () => {
         ) : (
           <Loading />
         )}
+          </>
+        }
+      
       </div>
     );
 };

@@ -66,7 +66,7 @@ export default function reducer(state = initialState, action) {
       const temperament =
         action.payload === "all"
           ? filterTemperament
-          : state.allDogs.filter((e) =>
+          : state.dogs.filter((e) =>
               e.temperaments.includes(action.payload)
             );
       return {
@@ -107,7 +107,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         dogs:
-          action.payload === true
+          action.payload === true  
             ? state.dogs.sort((a, b) =>parseInt(a.weight)-parseInt(b.weight))
             : state.dogs.sort((a, b) => parseInt(b.weight)-parseInt(a.weight)),
       };
