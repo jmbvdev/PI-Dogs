@@ -66,7 +66,7 @@ export default function reducer(state = initialState, action) {
       const temperament =
         action.payload === "all"
           ? filterTemperament
-          : state.dogs.filter((e) =>
+          : state.allDogs.filter((e) =>
               e.temperaments.includes(action.payload)
             );
       return {
