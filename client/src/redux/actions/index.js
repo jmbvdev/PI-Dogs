@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "http://localhost:3001";
+
 export const GET_DOGS = "GET_DOGS";
 export const GET_DOG_DETAILS = "GET_DOG_DETAILS";
 export const SEARCH_DOGS = "SEARCH_DOGS";
@@ -20,7 +20,7 @@ export const IS_BUFFERING = "IS_BUFFERING";
 export function getDogs() {
   return async function (dispatch) {
     return axios
-      .get(url + "/dogs")
+      .get("/dogs")
       .then((res) => {
         dispatch({
           type: GET_DOGS,
@@ -36,7 +36,7 @@ export function getDogs() {
 export function getDogDetails(id) {
   return async function (dispatch) {
     return axios
-      .get(url + `/dogs/${id}`)
+      .get(`/dogs/${id}`)
       .then((res) => {
         dispatch({
           type: GET_DOG_DETAILS,
@@ -50,7 +50,7 @@ export function getDogDetails(id) {
 export function searchDogs(name) {
   return async function (dispatch) {
     return axios
-      .get(url + `/dogs?name=${name}`)
+      .get(`/dogs?name=${name}`)
       .then((res) => {
         dispatch({
           type: SEARCH_DOGS,
@@ -64,7 +64,7 @@ export function searchDogs(name) {
 export function getTemperaments() {
   return async function (dispatch) {
     return axios
-      .get(url + `/temperaments`)
+      .get( `/temperaments`)
       .then((res) => {
         dispatch({
           type: GET_TEMPERAMENTS,
@@ -87,7 +87,7 @@ export function addDog({
   temperaments,
 }) {
   return async function () {
-    var resp = await axios.post("http://localhost:3001/dogs", {
+    var resp = await axios.post("/dogs", {
       name,
       height: `${minHeight} - ${maxHeight}`,
       weight: `${minWeight} - ${maxWeight}`,
@@ -154,7 +154,7 @@ export function changeLoading(payload) {
 export function deleteDog(id) {
   return async function (dispatch) {
     return axios
-      .delete(url + `/dogs/${id}`)
+      .delete( `/dogs/${id}`)
       .then((res) => {
         dispatch({
           type: DELETE_DOG,
