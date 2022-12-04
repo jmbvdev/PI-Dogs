@@ -61,7 +61,7 @@ const Config = ({ setConfig, setDogsPerPage, dark }) => {
             </button>
             <button>
               <a
-                href="https://jmbvdev.netlify.app/"
+                href="https://jmbv.netlify.app/"
                 target="_blanck"
                 rel="noopener noreferrer"
               >
